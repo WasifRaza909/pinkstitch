@@ -133,6 +133,7 @@ const getRolePermissionById = asyncHandler(async (req, res) => {
 const getRolePermissions = asyncHandler(async (req, res) => {
   const rolePermissions = await RolePermission.find();
   const rolePermissionsArr = [];
+
   if (rolePermissions) {
     for (const rolePermission of rolePermissions) {
       const role = await Role.findById(rolePermission.role);
