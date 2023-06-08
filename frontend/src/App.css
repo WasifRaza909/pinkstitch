@@ -1,0 +1,628 @@
+:root {
+  --black-color: #000;
+  --font-family: "Poppins", sans-serif;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: var(--font-family);
+  background-color: #fafafa;
+}
+
+a {
+  text-decoration: none;
+  color: var(--black-color);
+}
+
+li {
+  list-style-type: none;
+}
+
+.container {
+  padding: 20px;
+  display: flex;
+  height: 100%;
+}
+
+.app {
+  height: 100vh;
+}
+.right_screens {
+  margin: 0 auto;
+
+  width: 75%;
+}
+
+/* Sidebar */
+.sidebar {
+  width: 17%;
+  background-color: #ffffff;
+  box-shadow: 0px 0px 8px #dbdbdb;
+  border-radius: 15px;
+  height: 100%;
+}
+
+.sidebar-container {
+  /* width: 85%; */
+  padding: 30px 20px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 100%;
+}
+
+.logo {
+  padding-bottom: 1rem;
+}
+
+.logo img {
+  width: 150px;
+}
+
+.sidebar h2 {
+  border-top: 1px solid #e44b8b;
+  border-bottom: 1px solid #e44b8b;
+  width: 100%;
+  text-align: center;
+  color: #e44b8b;
+  font-weight: 500;
+  padding: 0.4rem 0;
+  font-size: 20px;
+}
+
+.sidebar ul {
+  padding: 1rem 0;
+  width: 100%;
+}
+
+.sidebar ul li {
+  display: flex;
+  align-items: center;
+  padding: 0.9rem 1rem;
+  color: #b2b7c6;
+  border-left: 4px solid transparent;
+}
+
+.sidebar ul li a {
+  color: #b2b7c6;
+}
+
+.sidebar ul li:hover {
+  border-left: 4px solid #e44b8b;
+  cursor: pointer;
+  border-radius: 4px;
+  color: #e44b8b;
+}
+
+.sidebar ul li:hover > a {
+  color: #e44b8b;
+}
+
+.sidebar ul li a:hover {
+  color: #e44b8b;
+}
+
+.sidebar ul li i {
+  margin-right: 1rem;
+}
+
+/* Roles Screen */
+.show_modal.roles_screen::before {
+  content: "";
+  position: absolute;
+  border-radius: 15px;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(
+    0,
+    0,
+    0,
+    0.5
+  ); /* Adjust the background color and opacity as needed */
+  z-index: 1; /* Ensure the overlay appears on top of other elements */
+}
+
+.roles_screen {
+  background-color: #ffffff;
+  box-shadow: 0px 0px 8px #dbdbdb;
+  border-radius: 15px;
+  padding: 30px 50px;
+  height: 100%;
+  position: relative;
+}
+
+.roles_screen h1 {
+  color: #e44b8b;
+  font-weight: 600;
+}
+
+.roles_screen_container div:first-child {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.roles_screen_container div:first-child button {
+  background-color: #e44b8b;
+  border: none;
+  padding: 1rem 1rem;
+  border-radius: 5px;
+  font-size: 16px;
+  color: #ffffff;
+  font-weight: 500;
+  letter-spacing: 1px;
+}
+
+.roles_screen_container div:first-child button i {
+  padding-left: 1rem;
+  cursor: pointer;
+}
+
+.roles_screen_container input {
+  border: none;
+  background-color: #fafafa;
+  padding: 1rem;
+  border-radius: 5px;
+  width: 300px;
+  margin: 1rem 0;
+}
+
+.roles_screen_container input {
+  outline: none;
+}
+
+.roles_screen_container ul {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.roles_screen_container ul li {
+  width: 33%;
+  border-bottom: 1px solid #fafafa;
+  padding: 1rem 0;
+}
+
+.roles_screen_container ul li h5 {
+  font-size: 16px;
+}
+
+.roles_screen_container ul li button {
+  padding: 0.6rem 1rem;
+  margin-right: 0.6rem;
+  border: none;
+  border-radius: 3px;
+}
+
+.roles_screen_container ul li button:first-child {
+  background-color: #e44b8b;
+  color: #ffffff;
+}
+
+.roles_screen_container ul li button:last-child {
+  background-color: #b2b7c6;
+  color: #ffffff;
+}
+
+.roles_screen_container ul li button:hover {
+  cursor: pointer;
+}
+
+.roles_screen .close_modal {
+  position: absolute;
+  z-index: 2;
+  color: #fff;
+  right: 4%;
+}
+
+.roles_screen .close_modal:hover {
+  cursor: pointer;
+}
+
+/* Create Role Modal */
+.create_role_modal {
+  padding: 30px;
+  background-color: #fff;
+  border-radius: 10px;
+  display: inline-block;
+  position: absolute;
+  top: 40%;
+  left: 50%;
+  z-index: 2;
+}
+
+.create_role_modal h3 {
+  margin-bottom: 0.7rem;
+  font-size: 24px;
+}
+
+.create_role_modal input {
+  padding: 1rem;
+  width: 350px;
+  height: 45px;
+  border: none;
+  background-color: #fafafa;
+  border-radius: 5px;
+}
+
+.create_role_modal input:focus {
+  outline: none;
+}
+
+.create_role_modal div {
+  display: inline-flex;
+  flex-direction: column;
+}
+
+.create_role_modal button {
+  width: 100px;
+  margin-right: 0.6rem;
+  border: none;
+  border-radius: 3px;
+  height: 45px;
+  justify-self: flex-end;
+  margin-left: auto;
+  margin-right: 0;
+  background-color: #e44b8b;
+  color: #ffffff;
+  font-weight: 600;
+  margin-top: 0.7rem;
+  cursor: pointer;
+}
+
+/* Role Permissions */
+
+.role_permissions {
+  background-color: #ffffff;
+  box-shadow: 0px 0px 8px #dbdbdb;
+  border-radius: 15px;
+  padding: 30px 50px;
+  height: 100%;
+  position: relative;
+  overflow-x: auto;
+}
+
+.role_permissions h1 {
+  color: #e44b8b;
+  font-weight: 600;
+}
+
+.role_permissions table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+.role_permissions table thead {
+  color: #000;
+  margin-bottom: 1rem;
+  border-bottom: 1px solid #fafafa;
+}
+
+.role_permissions table tr td:first-child {
+  width: 25%;
+  color: #000;
+  font-weight: 500;
+  font-size: 14px;
+}
+
+.role_permissions table tr td:last-child {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  grid-gap: 10px;
+}
+
+.role_permissions tr label {
+  font-size: 14px;
+  cursor: pointer;
+  color: #7f83a9;
+  font-weight: 400;
+  margin: 0.5rem 0;
+  display: flex;
+  align-items: center;
+}
+
+.role_permissions th,
+.role_permissions td {
+  padding: 1rem 0;
+  text-align: left;
+}
+
+.role_permissions th {
+  font-weight: bold;
+}
+
+.role_permissions td input[type="checkbox"] {
+  margin-right: 0.5rem;
+}
+
+.role_permissions tr:not(:last-child) {
+  border-bottom: 1px solid #fafafa;
+}
+
+.role_permissions form button {
+  width: 120px;
+  border: none;
+  border-radius: 3px;
+  height: 45px;
+  background-color: #e44b8b;
+  color: #ffffff;
+  font-weight: 600;
+  margin-top: 1rem;
+  cursor: pointer;
+  display: block;
+  margin-left: auto;
+  margin-right: 0;
+}
+
+/* User Screen */
+.users_screen {
+  background-color: #ffffff;
+  box-shadow: 0px 0px 8px #dbdbdb;
+  border-radius: 15px;
+  padding: 30px 50px;
+  height: 100%;
+}
+
+.users_screen h1 {
+  color: #e44b8b;
+  font-weight: 600;
+}
+
+.users_screen_container div:first-child {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.users_screen_container div:first-child button {
+  background-color: #e44b8b;
+  border: none;
+  padding: 1rem 1rem;
+  border-radius: 5px;
+  font-size: 16px;
+  color: #ffffff;
+  font-weight: 500;
+  letter-spacing: 1px;
+}
+
+.users_screen_container div:first-child button i {
+  padding-left: 1rem;
+  cursor: pointer;
+}
+
+.users_screen_container input {
+  border: none;
+  background-color: #fafafa;
+  padding: 1rem;
+  border-radius: 5px;
+  width: 300px;
+  margin: 1rem 0;
+}
+
+.users_screen_container input {
+  outline: none;
+}
+
+.users_screen_container table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.users_screen_container thead th {
+  padding: 1rem 0;
+  text-align: left;
+}
+
+.users_screen_container tbody td {
+  padding: 1rem 0;
+  border-top: 1px solid #fafafa;
+}
+
+.users_screen_container tbody tr:last-child td {
+  border-bottom: none;
+}
+
+.users_screen_container button {
+  padding: 0.6rem 1rem;
+  margin-right: 0.6rem;
+  border: none;
+  border-radius: 3px;
+  background-color: #e44b8b;
+  color: #ffffff;
+  cursor: pointer;
+}
+
+.users_screen_container button:last-child {
+  background-color: #b2b7c6;
+  color: #fafafa;
+}
+
+/* Create User Screen */
+.create_user_screen {
+  background-color: #ffffff;
+  box-shadow: 0px 0px 8px #dbdbdb;
+  border-radius: 15px;
+  padding: 30px 50px;
+  height: auto;
+}
+
+.create_user_screen h1 {
+  color: #e44b8b;
+  font-weight: 600;
+}
+
+.create_user_screen form .form_grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  margin-top: 2rem;
+  justify-content: space-between;
+}
+
+.create_user_screen label {
+  display: flex;
+  flex-direction: column;
+  margin-right: 3rem;
+}
+
+.create_user_screen .radio_label {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.create_user_screen .radio_label input {
+  width: auto;
+  margin-right: 1rem;
+}
+
+.create_user_screen input {
+  border: none;
+  background-color: #fafafa;
+  padding: 1rem;
+  border-radius: 5px;
+  width: 100%;
+  margin: 1rem 0;
+}
+
+.create_user_screen input:focus {
+  outline: none;
+}
+
+.create_user_screen select {
+  border: none;
+  background-color: #fafafa;
+  padding: 1rem;
+  border-radius: 5px;
+  width: 100%;
+  margin: 1rem 0;
+  cursor: pointer;
+}
+
+.create_user_screen select:focus {
+  outline: none;
+}
+
+.create_user_screen select option {
+  height: 1rem !important;
+}
+
+.create_user_screen .cta_buttons {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 2rem;
+}
+
+.create_user_screen .cta_buttons button {
+  padding: 1rem 1.8rem;
+  margin-right: 0.6rem;
+  border: none;
+  border-radius: 3px;
+  background-color: #e44b8b;
+  color: #ffffff;
+  cursor: pointer;
+}
+
+.create_user_screen .cta_buttons button:last-child {
+  background-color: #b2b7c6;
+  color: #ffffff;
+}
+
+/* Edit User Screen */
+.edit_user_screen {
+  background-color: #ffffff;
+  box-shadow: 0px 0px 8px #dbdbdb;
+  border-radius: 15px;
+  padding: 30px 50px;
+  height: auto;
+}
+
+.edit_user_screen h1 {
+  color: #e44b8b;
+  font-weight: 600;
+}
+
+.edit_user_screen form .form_grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  margin-top: 2rem;
+  justify-content: space-between;
+}
+
+.edit_user_screen label {
+  display: flex;
+  flex-direction: column;
+  margin-right: 3rem;
+}
+
+.edit_user_screen .radio_label {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.edit_user_screen .radio_label input {
+  width: auto;
+  margin-right: 1rem;
+}
+
+.edit_user_screen input {
+  border: none;
+  background-color: #fafafa;
+  padding: 1rem;
+  border-radius: 5px;
+  width: 100%;
+  margin: 1rem 0;
+}
+
+.edit_user_screen input:focus {
+  outline: none;
+}
+
+.edit_user_screen select {
+  border: none;
+  background-color: #fafafa;
+  padding: 1rem;
+  border-radius: 5px;
+  width: 100%;
+  margin: 1rem 0;
+  cursor: pointer;
+}
+
+.edit_user_screen .custom_select:focus {
+  outline: none;
+}
+
+.edit_user_screen select option {
+  height: 1rem !important;
+}
+
+.edit_user_screen .cta_buttons {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 2rem;
+}
+
+.edit_user_screen .cta_buttons button {
+  padding: 1rem 1.8rem;
+  margin-right: 0.6rem;
+  border: none;
+  border-radius: 3px;
+  background-color: #e44b8b;
+  color: #ffffff;
+  cursor: pointer;
+}
+
+.edit_user_screen .cta_buttons button:last-child {
+  background-color: #7f83a9;
+  color: #ffffff;
+}
