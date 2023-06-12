@@ -6,6 +6,12 @@ import RolePermissionsScreen from "./screens/RolePermissionsScreen";
 import UsersScreen from "./screens/UsersScreen";
 import CreateUserScreen from "./screens/CreateUserScreen";
 import EditUserScreen from "./screens/EditUserScreen";
+import CustomersScreen from "./screens/CustomersScreen";
+import CreateCustomerScreen from "./screens/CreateCustomerScreen";
+import EditCustomerScreen from "./screens/EditCustomerScreen";
+import AgentsScreen from "./screens/AgentsScreen";
+import EditAgentScreen from "./screens/EditAgentScreen";
+import CreateAgentScreen from "./screens/CreateAgentScreen";
 
 function App() {
   return (
@@ -16,16 +22,31 @@ function App() {
           <div className="right_screens">
             <Routes>
               <Route path="/admin/roles" element={<RolesScreen />} />
-              <Route path="/admin/users" element={<UsersScreen />} />
               <Route
                 path="/admin/roles/create"
                 element={<RolePermissionsScreen />}
               />
+              <Route path="/admin/users" element={<UsersScreen />} />
               <Route
                 path="/admin/users/create"
                 element={<CreateUserScreen />}
               />
               <Route path="/admin/users/edit" element={<EditUserScreen />} />
+              <Route path="/admin/customers" element={<CustomersScreen />} />
+              <Route
+                path="/admin/customers/create"
+                element={<CreateCustomerScreen />}
+              />
+              <Route
+                path="/admin/customers/edit"
+                element={<EditCustomerScreen />}
+              />
+              <Route path="/admin/agents" element={<AgentsScreen />} />
+              <Route path="/admin/agents/edit" element={<EditAgentScreen />} />
+              <Route
+                path="/admin/agents/create"
+                element={<CreateAgentScreen />}
+              />
               {/* <RolesScreen /> */}
             </Routes>
           </div>

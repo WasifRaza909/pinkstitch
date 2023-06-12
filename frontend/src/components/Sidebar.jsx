@@ -14,9 +14,9 @@ function Sidebar() {
         <ul>
           <li>
             <i className="fas fa-solid fa-user"></i>
-            <a href="/">Customer</a>
+            <Link to="/admin/customers">Customers</Link>
           </li>
-          <li>
+          {/* <li>
             <i class="fas fa-solid fa-folder"></i>
             <a href="/">Categories</a>
           </li>
@@ -59,11 +59,11 @@ function Sidebar() {
           <li>
             <i className="fas fa-solid fa-bell"></i>
             <a href="/">Notification Center</a>
-          </li>
-          <li>
+          </li> */}
+          {/* <li>
             <i className="fas fa-solid fa-cog"></i>
             <a href="/">Settings</a>
-          </li>
+          </li> */}
           <li>
             <i className="fas fa-solid fa-users-cog"></i>
             <Link to="/admin/users">Users</Link>
@@ -73,9 +73,13 @@ function Sidebar() {
             <Link to="/admin/roles">Roles</Link>
           </li>
           <li>
+            <i class="fas fa-user-tie"></i>
+            <Link to="/admin/agents">Agents</Link>
+          </li>
+          {/* <li>
             <i className="fas fa-solid fa-lock"></i>
             <a href="/">Change Password</a>
-          </li>
+          </li> */}
         </ul>
       </div>
     </div>

@@ -45,14 +45,14 @@ function CreateUserScreen() {
                   Select Role
                   <select>
                     <option value="Manager">Manager</option>
-                    <option value="Manager">Manager</option>
-                    <option value="Manager">Manager</option>
+                    <option value="Admin">Admin</option>
+                    <option value="Developer">Developer</option>
                   </select>
                 </label>
               </div>
               <div>
                 <label className="radio_label">
-                  <input defaultChecked type="radio" />
+                  <input defaultChecked type="checkbox" />
                   is Active?
                 </label>
               </div>

@@ -45,6 +45,7 @@ li {
   box-shadow: 0px 0px 8px #dbdbdb;
   border-radius: 15px;
   height: 100%;
+  overflow-y: auto;
 }
 
 .sidebar-container {
@@ -85,12 +86,12 @@ li {
   display: flex;
   align-items: center;
   padding: 0.9rem 1rem;
-  color: #b2b7c6;
+  color: #7f83a9;
   border-left: 4px solid transparent;
 }
 
 .sidebar ul li a {
-  color: #b2b7c6;
+  color: #7f83a9;
 }
 
 .sidebar ul li:hover {
@@ -159,6 +160,7 @@ li {
   color: #ffffff;
   font-weight: 500;
   letter-spacing: 1px;
+  cursor: pointer;
 }
 
 .roles_screen_container div:first-child button i {
@@ -208,7 +210,7 @@ li {
 }
 
 .roles_screen_container ul li button:last-child {
-  background-color: #b2b7c6;
+  background-color: #7f83a9;
   color: #ffffff;
 }
 
@@ -266,7 +268,7 @@ li {
   width: 100px;
   margin-right: 0.6rem;
   border: none;
-  border-radius: 3px;
+  border-radius: 5px;
   height: 45px;
   justify-self: flex-end;
   margin-left: auto;
@@ -279,7 +281,6 @@ li {
 }
 
 /* Role Permissions */
-
 .role_permissions {
   background-color: #ffffff;
   box-shadow: 0px 0px 8px #dbdbdb;
@@ -441,7 +442,7 @@ li {
 }
 
 .users_screen_container button:last-child {
-  background-color: #b2b7c6;
+  background-color: #7f83a9;
   color: #fafafa;
 }
 
@@ -464,18 +465,20 @@ li {
   grid-template-columns: 1fr 1fr;
   margin-top: 2rem;
   justify-content: space-between;
+  gap: 0.5rem 3rem;
 }
 
 .create_user_screen label {
   display: flex;
   flex-direction: column;
-  margin-right: 3rem;
 }
 
 .create_user_screen .radio_label {
   display: flex;
   flex-direction: row;
   align-items: center;
+  cursor: pointer;
+  user-select: none;
 }
 
 .create_user_screen .radio_label input {
@@ -532,7 +535,7 @@ li {
 }
 
 .create_user_screen .cta_buttons button:last-child {
-  background-color: #b2b7c6;
+  background-color: #7f83a9;
   color: #ffffff;
 }
 
@@ -567,6 +570,8 @@ li {
   display: flex;
   flex-direction: row;
   align-items: center;
+  cursor: pointer;
+  user-select: none;
 }
 
 .edit_user_screen .radio_label input {
@@ -625,4 +630,864 @@ li {
 .edit_user_screen .cta_buttons button:last-child {
   background-color: #7f83a9;
   color: #ffffff;
+}
+
+/* Customers Screen */
+.show_address_modal.customers_screen::before {
+  content: "";
+  position: absolute;
+  border-radius: 15px;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(
+    0,
+    0,
+    0,
+    0.5
+  ); /* Adjust the background color and opacity as needed */
+  z-index: 1; /* Ensure the overlay appears on top of other elements */
+}
+
+.customers_screen {
+  background-color: #ffffff;
+  box-shadow: 0px 0px 8px #dbdbdb;
+  border-radius: 15px;
+  padding: 30px 50px;
+  height: 100%;
+  position: relative;
+}
+
+.customers_screen h1 {
+  color: #e44b8b;
+  font-weight: 600;
+}
+
+.customers_screen_container div:first-child {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.customers_screen_container div:first-child button {
+  background-color: #e44b8b;
+  border: none;
+  padding: 1rem 1rem;
+  border-radius: 5px;
+  font-size: 16px;
+  color: #ffffff;
+  font-weight: 500;
+  letter-spacing: 1px;
+  cursor: pointer;
+}
+
+.customers_screen_container div:first-child button i {
+  padding-left: 1rem;
+}
+
+.customers_screen_container input {
+  border: none;
+  background-color: #fafafa;
+  padding: 1rem;
+  border-radius: 5px;
+  width: 300px;
+  margin: 1rem 0;
+}
+
+.customers_screen_container input {
+  outline: none;
+}
+
+.customers_screen_container table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.customers_screen_container thead th {
+  padding: 1rem 0;
+  text-align: left;
+}
+
+.customers_screen_container tbody td {
+  padding: 1rem 0;
+  border-top: 1px solid #fafafa;
+}
+
+.customers_screen_container tbody tr:last-child td {
+  border-bottom: none;
+}
+
+.customers_screen_container .show_address_btn {
+  padding: 0.8rem 1rem;
+  margin-right: 0.6rem;
+  border: none;
+  border-radius: 3px;
+  background-color: #7f83a9;
+  color: #ffffff;
+  cursor: pointer;
+}
+
+.customers_screen_container td:last-child button {
+  padding: 0.6rem 1rem;
+  margin-right: 0.6rem;
+  border: none;
+  border-radius: 3px;
+  background-color: #e44b8b;
+  color: #ffffff;
+  cursor: pointer;
+}
+
+.customers_screen_container td:last-child button:last-child {
+  background-color: #7f83a9;
+  color: #fafafa;
+}
+
+.customers_screen .close_modal {
+  position: absolute;
+  z-index: 2;
+  color: #fff;
+  right: 4%;
+}
+
+.customers_screen .close_modal:hover {
+  cursor: pointer;
+}
+
+/* Customer Address Modal */
+.customer_address_modal {
+  width: 1000px;
+  padding: 30px;
+  background-color: #fff;
+  border-radius: 10px;
+  display: inline-block;
+  position: absolute;
+  top: 50%;
+  left: 60%;
+  transform: translate(-50%, -50%);
+  z-index: 2;
+}
+
+.customer_address_modal h3 {
+  margin-bottom: 0.9rem;
+  font-size: 24px;
+}
+
+.customer_address_modal ul li {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 1rem;
+}
+
+.customer_address_modal ul li div {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+
+.customer_address_modal ul li h4 {
+  margin-bottom: 0.6rem;
+}
+
+.customer_address_modal ul li div p {
+  background-color: #fafafa;
+  height: 45px;
+  border-radius: 5px;
+  margin-right: 2rem;
+  display: flex;
+  width: 750px;
+
+  align-items: center;
+  padding: 0 1rem;
+}
+
+.customer_address_modal button {
+  width: 120px;
+  margin-right: 0.6rem;
+  border: none;
+  border-radius: 5px;
+  height: 45px;
+  justify-self: flex-end;
+  margin-left: auto;
+  margin-right: 0;
+  background-color: #e44b8b;
+  color: #ffffff;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+/* Create Customer Screen */
+.create_customer_screen {
+  background-color: #ffffff;
+  box-shadow: 0px 0px 8px #dbdbdb;
+  border-radius: 15px;
+  padding: 30px 50px;
+  height: auto;
+}
+
+.create_customer_screen h1 {
+  color: #e44b8b;
+  font-weight: 600;
+}
+
+.create_customer_screen form .form_grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  margin-top: 2rem;
+  justify-content: space-between;
+  gap: 0.5rem 3rem;
+}
+
+.create_customer_screen form .addresses {
+  grid-column: 1 / span 2;
+}
+
+.create_customer_screen form .add_new_address_btn {
+  padding: 1rem 1.8rem;
+  border: none;
+  border-radius: 3px;
+  background-color: #e44b8b;
+  color: #ffffff;
+  cursor: pointer;
+  width: 200px;
+  margin-left: auto;
+  margin-right: 0;
+  margin-top: 1rem;
+  grid-column: 1 / span 2;
+}
+
+.create_customer_screen label {
+  display: flex;
+  flex-direction: column;
+}
+
+.create_customer_screen .addresses label {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.create_customer_screen .addresses label .fa-multiply {
+  font-size: 22px;
+  cursor: pointer;
+}
+
+.create_customer_screen .radio_label {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  cursor: pointer;
+  user-select: none;
+}
+
+.create_customer_screen .radio_label input {
+  width: auto;
+  margin-right: 1rem;
+}
+
+.create_customer_screen input {
+  border: none;
+  background-color: #fafafa;
+  padding: 1rem;
+  border-radius: 5px;
+  width: 100%;
+  margin: 1rem 0;
+}
+
+.create_customer_screen input:focus {
+  outline: none;
+}
+
+.create_customer_screen select {
+  border: none;
+  background-color: #fafafa;
+  padding: 1rem;
+  border-radius: 5px;
+  width: 100%;
+  margin: 1rem 0;
+  cursor: pointer;
+}
+
+.create_customer_screen select:focus {
+  outline: none;
+}
+
+.create_customer_screen select option {
+  height: 1rem !important;
+}
+
+.create_customer_screen .cta_buttons {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 2rem;
+}
+
+.create_customer_screen .cta_buttons button {
+  padding: 1rem 1.8rem;
+  margin-right: 0.6rem;
+  border: none;
+  border-radius: 3px;
+  background-color: #e44b8b;
+  color: #ffffff;
+  cursor: pointer;
+}
+
+.create_customer_screen .cta_buttons button:last-child {
+  background-color: #7f83a9;
+  color: #ffffff;
+}
+
+/* Edit Customer Screen */
+.edit_customer_screen {
+  background-color: #ffffff;
+  box-shadow: 0px 0px 8px #dbdbdb;
+  border-radius: 15px;
+  padding: 30px 50px;
+  height: auto;
+}
+
+.edit_customer_screen h1 {
+  color: #e44b8b;
+  font-weight: 600;
+}
+
+.edit_customer_screen form .form_grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  margin-top: 2rem;
+  justify-content: space-between;
+  gap: 0.5rem 3rem;
+}
+
+.edit_customer_screen form .addresses {
+  grid-column: 1 / span 2;
+}
+
+.edit_customer_screen form .add_new_address_btn {
+  padding: 1rem 1.8rem;
+  border: none;
+  border-radius: 3px;
+  background-color: #e44b8b;
+  color: #ffffff;
+  cursor: pointer;
+  width: 200px;
+  margin-left: auto;
+  margin-right: 0;
+  margin-top: 1rem;
+  grid-column: 1 / span 2;
+}
+
+.edit_customer_screen label {
+  display: flex;
+  flex-direction: column;
+}
+
+.edit_customer_screen .radio_label {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  cursor: pointer;
+  user-select: none;
+}
+
+.edit_customer_screen .radio_label input {
+  width: auto;
+  margin-right: 1rem;
+}
+
+.edit_customer_screen input {
+  border: none;
+  background-color: #fafafa;
+  padding: 1rem;
+  border-radius: 5px;
+  width: 100%;
+  margin: 1rem 0;
+}
+
+.edit_customer_screen input:focus {
+  outline: none;
+}
+
+.edit_customer_screen select {
+  border: none;
+  background-color: #fafafa;
+  padding: 1rem;
+  border-radius: 5px;
+  width: 100%;
+  margin: 1rem 0;
+  cursor: pointer;
+}
+
+.edit_customer_screen select:focus {
+  outline: none;
+}
+
+.edit_customer_screen select option {
+  height: 1rem !important;
+}
+
+.edit_customer_screen .cta_buttons {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 2rem;
+}
+
+.edit_customer_screen .cta_buttons button {
+  padding: 1rem 1.8rem;
+  margin-right: 0.6rem;
+  border: none;
+  border-radius: 3px;
+  background-color: #e44b8b;
+  color: #ffffff;
+  cursor: pointer;
+}
+
+.edit_customer_screen .cta_buttons button:last-child {
+  background-color: #7f83a9;
+  color: #ffffff;
+}
+
+/* Agents Screen */
+.show_agent_preview_modal.agents_screen::before {
+  content: "";
+  position: absolute;
+  border-radius: 15px;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(
+    0,
+    0,
+    0,
+    0.5
+  ); /* Adjust the background color and opacity as needed */
+  z-index: 1; /* Ensure the overlay appears on top of other elements */
+}
+
+.agents_screen {
+  background-color: #ffffff;
+  box-shadow: 0px 0px 8px #dbdbdb;
+  border-radius: 15px;
+  padding: 30px 50px;
+  height: 100%;
+  position: relative;
+}
+
+.agents_screen h1 {
+  color: #e44b8b;
+  font-weight: 600;
+}
+
+.agents_screen_container div:first-child {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.agents_screen_container div:first-child button {
+  background-color: #e44b8b;
+  border: none;
+  padding: 1rem 1rem;
+  border-radius: 5px;
+  font-size: 16px;
+  color: #ffffff;
+  font-weight: 500;
+  letter-spacing: 1px;
+  cursor: pointer;
+}
+
+.agents_screen_container div:first-child button i {
+  padding-left: 1rem;
+}
+
+.agents_screen_container input {
+  border: none;
+  background-color: #fafafa;
+  padding: 1rem;
+  border-radius: 5px;
+  width: 300px;
+  margin: 1rem 0;
+}
+
+.agents_screen_container input {
+  outline: none;
+}
+
+.agents_screen_container table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.agents_screen_container thead th {
+  padding: 1rem 0;
+  text-align: left;
+}
+
+.agents_screen_container tbody td {
+  padding: 1rem 0;
+  border-top: 1px solid #fafafa;
+}
+
+.agents_screen_container tbody tr:last-child td {
+  border-bottom: none;
+}
+
+.agents_screen_container .show_address_btn {
+  padding: 0.8rem 1rem;
+  margin-right: 0.6rem;
+  border: none;
+  border-radius: 3px;
+  background-color: #7f83a9;
+  color: #ffffff;
+  cursor: pointer;
+}
+
+.agents_screen_container td:last-child button {
+  padding: 0.6rem 1rem;
+  margin-right: 0.6rem;
+  border: none;
+  border-radius: 3px;
+  background-color: #e44b8b;
+  color: #ffffff;
+  cursor: pointer;
+}
+
+.agents_screen_container td:last-child button:last-child {
+  background-color: #7f83a9;
+  color: #fafafa;
+}
+
+.agents_screen .close_modal {
+  position: absolute;
+  z-index: 2;
+  color: #fff;
+  right: 4%;
+}
+
+.agents_screen .close_modal:hover {
+  cursor: pointer;
+}
+
+/* Agent Preview Modal */
+.agent_preview_modal {
+  width: 1000px;
+  padding: 30px;
+  background-color: #fff;
+  border-radius: 10px;
+  display: inline-block;
+  position: absolute;
+  top: 50%;
+  left: 60%;
+  transform: translate(-50%, -50%);
+  z-index: 2;
+}
+
+.agent_preview_modal h3 {
+  margin-bottom: 2rem;
+  font-size: 24px;
+}
+
+.agent_preview_modal ul {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0.5rem 4rem;
+}
+
+.agent_preview_modal ul li {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 1rem;
+}
+
+.agent_preview_modal ul li div {
+  display: flex;
+  flex-direction: row;
+}
+
+.agent_preview_modal ul li h4 {
+  margin-bottom: 0.6rem;
+}
+
+.agent_preview_modal ul li div p {
+  background-color: #fafafa;
+  height: 45px;
+  border-radius: 5px;
+  display: flex;
+  width: 100%;
+  align-items: center;
+  padding: 0 1rem;
+}
+
+.agent_preview_modal button {
+  width: 120px;
+  margin-right: 0.6rem;
+  border: none;
+  border-radius: 5px;
+  height: 45px;
+  justify-self: flex-end;
+  margin-left: auto;
+  margin-right: 0;
+  background-color: #e44b8b;
+  color: #ffffff;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.agent_preview_modal .expertise_list {
+  grid-column: 1 / span 2;
+}
+
+.agent_preview_modal .expertise_list div {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.agent_preview_modal .expertise_list div p {
+  margin-right: 0.5rem;
+  border-radius: 200px;
+  width: fit-content;
+  margin-top: 1rem;
+}
+/* Edit Agent Screen */
+.edit_agent_screen {
+  background-color: #ffffff;
+  box-shadow: 0px 0px 8px #dbdbdb;
+  border-radius: 15px;
+  padding: 30px 50px;
+  height: auto;
+}
+
+.edit_agent_screen h1 {
+  color: #e44b8b;
+  font-weight: 600;
+}
+
+.edit_agent_screen form .form_grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  margin-top: 2rem;
+  justify-content: space-between;
+  gap: 0.5rem 3rem;
+}
+
+.edit_agent_screen form .addresses {
+  grid-column: 1 / span 2;
+}
+
+.edit_agent_screen form .add_new_address_btn {
+  padding: 1rem 1.8rem;
+  border: none;
+  border-radius: 3px;
+  background-color: #e44b8b;
+  color: #ffffff;
+  cursor: pointer;
+  width: 200px;
+  margin-left: auto;
+  margin-right: 0;
+  margin-top: 1rem;
+  grid-column: 1 / span 2;
+}
+
+.edit_agent_screen label {
+  display: flex;
+  flex-direction: column;
+}
+
+.edit_agent_screen .radio_label {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  cursor: pointer;
+  user-select: none;
+}
+
+.edit_agent_screen .radio_label input {
+  width: auto;
+  margin-right: 1rem;
+}
+
+.edit_agent_screen input {
+  border: none;
+  background-color: #fafafa;
+  padding: 1rem;
+  border-radius: 5px;
+  width: 100%;
+  margin: 1rem 0;
+}
+
+.edit_agent_screen input:focus {
+  outline: none;
+}
+
+.edit_agent_screen select {
+  border: none;
+  background-color: #fafafa;
+  padding: 1rem;
+  border-radius: 5px;
+  width: 100%;
+  margin: 1rem 0;
+  cursor: pointer;
+}
+
+.edit_agent_screen select:focus {
+  outline: none;
+}
+
+.edit_agent_screen select option {
+  height: 1rem !important;
+}
+
+.edit_agent_screen .cta_buttons {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 2rem;
+}
+
+.edit_agent_screen .cta_buttons button {
+  padding: 1rem 1.8rem;
+  margin-right: 0.6rem;
+  border: none;
+  border-radius: 3px;
+  background-color: #e44b8b;
+  color: #ffffff;
+  cursor: pointer;
+}
+
+.edit_agent_screen .cta_buttons button:last-child {
+  background-color: #7f83a9;
+  color: #ffffff;
+}
+
+.edit_agent_screen .address_input {
+  grid-column: 1 / span 2;
+}
+
+.edit_agent_screen .expertise_input {
+  grid-column: 1 / span 2;
+}
+
+/* Create Agent Screen */
+.create_agent_screen {
+  background-color: #ffffff;
+  box-shadow: 0px 0px 8px #dbdbdb;
+  border-radius: 15px;
+  padding: 30px 50px;
+  height: auto;
+}
+
+.create_agent_screen h1 {
+  color: #e44b8b;
+  font-weight: 600;
+}
+
+.create_agent_screen form .form_grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  margin-top: 2rem;
+  justify-content: space-between;
+  gap: 0.5rem 3rem;
+}
+
+.create_agent_screen form .addresses {
+  grid-column: 1 / span 2;
+}
+
+.create_agent_screen form .add_new_address_btn {
+  padding: 1rem 1.8rem;
+  border: none;
+  border-radius: 3px;
+  background-color: #e44b8b;
+  color: #ffffff;
+  cursor: pointer;
+  width: 200px;
+  margin-left: auto;
+  margin-right: 0;
+  margin-top: 1rem;
+  grid-column: 1 / span 2;
+}
+
+.create_agent_screen label {
+  display: flex;
+  flex-direction: column;
+}
+
+.create_agent_screen .radio_label {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  cursor: pointer;
+  user-select: none;
+}
+
+.create_agent_screen .radio_label input {
+  width: auto;
+  margin-right: 1rem;
+}
+
+.create_agent_screen input {
+  border: none;
+  background-color: #fafafa;
+  padding: 1rem;
+  border-radius: 5px;
+  width: 100%;
+  margin: 1rem 0;
+}
+
+.create_agent_screen input:focus {
+  outline: none;
+}
+
+.create_agent_screen select {
+  border: none;
+  background-color: #fafafa;
+  padding: 1rem;
+  border-radius: 5px;
+  width: 100%;
+  margin: 1rem 0;
+  cursor: pointer;
+}
+
+.create_agent_screen select:focus {
+  outline: none;
+}
+
+.create_agent_screen select option {
+  height: 1rem !important;
+}
+
+.create_agent_screen .cta_buttons {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 2rem;
+}
+
+.create_agent_screen .cta_buttons button {
+  padding: 1rem 1.8rem;
+  margin-right: 0.6rem;
+  border: none;
+  border-radius: 3px;
+  background-color: #e44b8b;
+  color: #ffffff;
+  cursor: pointer;
+}
+
+.create_agent_screen .cta_buttons button:last-child {
+  background-color: #7f83a9;
+  color: #ffffff;
+}
+
+.create_agent_screen .address_input {
+  grid-column: 1 / span 2;
+}
+
+.create_agent_screen .expertise_input {
+  grid-column: 1 / span 2;
 }

@@ -1,13 +1,22 @@
+import { addListener } from "@reduxjs/toolkit";
+import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
-function EditUserScreen() {
+function EditAgentScreen() {
   const navigate = useNavigate();
+  const [addressCount, setAddressCount] = useState(1);
+
+  const addNewAddress = () => {
+    if (addressCount < 3) {
+      setAddressCount((prevCount) => prevCount + 1);
+    }
+  };
 
   return (
     <>
-      <div className="edit_user_screen">
-        <div className="edit_user_screen_container">
-          <h1>Edit User</h1>
+      <div className="edit_agent_screen">
+        <div className="edit_agent_screen_container">
+          <h1>Edit Agent</h1>
           <form>
             <div className="form_grid">
               <div>
@@ -18,36 +27,38 @@ function EditUserScreen() {
               </div>
               <div>
                 <label>
-                  Contact
-                  <input type="number" required />
-                </label>
-              </div>
-              <div>
-                <label>
                   Email
                   <input type="email" required />
                 </label>
               </div>
               <div>
                 <label>
-                  Password
-                  <input type="password" required />
+                  Contact
+                  <input type="number" required />
                 </label>
               </div>
               <div>
                 <label>
-                  Confirm Password
-                  <input type="password" required />
+                  Date Of Birth
+                  <input type="date" required />
                 </label>
               </div>
               <div>
                 <label>
-                  Select Role
-                  <select>
-                    <option value="Manager">Manager</option>
-                    <option value="Manager">Manager</option>
-                    <option value="Manager">Manager</option>
-                  </select>
+                  NIC
+                  <input type="number" required />
+                </label>
+              </div>
+              <div className="address_input">
+                <label>
+                  Address
+                  <input type="text" required />
+                </label>
+              </div>
+              <div className="expertise_input">
+                <label>
+                  Expertise
+                  <input type="text" required />
                 </label>
               </div>
               <div>
@@ -59,7 +70,7 @@ function EditUserScreen() {
             </div>
             <div className="cta_buttons">
               <button>Edit</button>
-              <button onClick={() => navigate("/admin/users")}>Back</button>
+              <button onClick={() => navigate("/admin/agents")}>Back</button>
             </div>
           </form>
         </div>
@@ -68,4 +79,4 @@ function EditUserScreen() {
   );
 }
 
-export default EditUserScreen;
+export default EditAgentScreen;
