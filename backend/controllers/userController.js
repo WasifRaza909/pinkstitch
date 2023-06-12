@@ -11,7 +11,14 @@ const registerUser = asyncHandler(async (req, res) => {
 
   const roleObj = await Role.findOne({ role: role });
 
-  const user = await User.create({
+  const user = await User.findOne({ email });
+
+  if (user) {
+    res.status(400);
+    throw new Error("User already exists");
+  }
+
+  const newUser = await User.create({
     name,
     email,
     contact,
@@ -20,9 +27,9 @@ const registerUser = asyncHandler(async (req, res) => {
     role: roleObj,
   });
 
-  if (user) {
+  if (newUser) {
     res.status(201).json({
-      user: user._id,
+      user: newUser._id,
       name,
       email,
       contact,
@@ -79,7 +86,7 @@ const updateUser = asyncHandler(async (req, res) => {
     contact,
     status,
     password,
-    role: roleId._id,
+    role: roleId,
   });
 
   if (user) {
@@ -89,7 +96,7 @@ const updateUser = asyncHandler(async (req, res) => {
       email,
       contact,
       status,
-      role: roleId._id,
+      role: roleId,
       token: generateToken(user._id),
     });
   } else {
@@ -115,9 +122,39 @@ const deleteUser = asyncHandler(async (req, res) => {
   res.json({ message: "User Deleted" });
 });
 
+// @desc    Get all users
+// @route   GET /api/users/
+// @access  Private
+const getUsers = asyncHandler(async (req, res) => {
+  const users = await User.find();
+
+  if (users) {
+    res.status(200).json(users);
+  } else {
+    res.status(400);
+    throw new Error("No Permission found");
+  }
+});
+
+// @desc    Get user by id
+// @route   GET /api/users/:id
+// @access  Private
+const getUserById = asyncHandler(async (req, res) => {
+  const user = await User.findById(req.params.id);
+
+  if (user) {
+    res.status(200).json(user);
+  } else {
+    res.status(404);
+    throw new Error("User not found");
+  }
+});
+
 module.exports = {
   registerUser,
   loginUser,
   updateUser,
   deleteUser,
+  getUsers,
+  getUserById,
 };

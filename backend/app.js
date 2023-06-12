@@ -8,7 +8,7 @@ const rolePermissionRoutes = require("./routes/rolepermissionroutes");
 const userRoutes = require("./routes/userRoutes");
 const customerRoutes = require("./routes/customerRoutes");
 const agentRoutes = require("./routes/agentRoutes");
-
+const { errorHandler } = require("./middlewares/errorMiddleware");
 dotenv.config();
 
 const app = express();
@@ -23,4 +23,6 @@ app.use("/api/users", userRoutes);
 app.use("/api/customers", customerRoutes);
 app.use("/api/agents", agentRoutes);
 
-app.listen(3000, console.log("Server is started on port 3000"));
+app.use(errorHandler);
+
+app.listen(5000, console.log("Server is started on port 5000"));

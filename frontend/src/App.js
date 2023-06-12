@@ -31,7 +31,10 @@ function App() {
                 path="/admin/users/create"
                 element={<CreateUserScreen />}
               />
-              <Route path="/admin/users/edit" element={<EditUserScreen />} />
+              <Route
+                path="/admin/users/edit/:id"
+                element={<EditUserScreen />}
+              />
               <Route path="/admin/customers" element={<CustomersScreen />} />
               <Route
                 path="/admin/customers/create"

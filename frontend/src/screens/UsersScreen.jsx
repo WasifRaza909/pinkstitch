@@ -1,7 +1,7 @@
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import { useState } from "react";
-import { deleteUser } from "../features/users/userSlice";
+import { useEffect } from "react";
+import { deleteUser, getUsers } from "../features/users/userSlice";
 
 function UsersScreen() {
   const navigate = useNavigate();
@@ -15,6 +15,10 @@ function UsersScreen() {
     }
     return;
   };
+
+  useEffect(() => {
+    dispatch(getUsers());
+  }, [dispatch]);
 
   return (
     <>
@@ -41,28 +45,33 @@ function UsersScreen() {
               </tr>
             </thead>
             <tbody>
-              {users &&
-                users.map((user) => (
-                  <tr>
-                    <td>{user.SNo}</td>
-                    <td>{user.name}</td>
-                    <td>{user.email}</td>
-                    <td>{user.role}</td>
-                    <td>{user.status}</td>
-                    <td>
-                      <button onClick={() => navigate("/admin/users/edit")}>
-                        <i className="fas fa-edit"></i>
-                      </button>
-                      <button
-                        onClick={() => {
-                          onDelete(user.SNo);
-                        }}
-                      >
-                        <i className="fas fa-trash"></i>
-                      </button>
-                    </td>
-                  </tr>
-                ))}
+              {users && users.length > 0
+                ? users.map((user) => (
+                    <tr>
+                      <td>{user._id}</td>
+                      <td>{user.name}</td>
+                      <td>{user.email}</td>
+                      <td>{user.role ? user.role.role : ""}</td>
+                      <td>{user.status}</td>
+                      <td>
+                        <button
+                          onClick={() =>
+                            navigate(`/admin/users/edit/${user._id}`)
+                          }
+                        >
+                          <i className="fas fa-edit"></i>
+                        </button>
+                        <button
+                          onClick={() => {
+                            onDelete(user.SNo);
+                          }}
+                        >
+                          <i className="fas fa-trash"></i>
+                        </button>
+                      </td>
+                    </tr>
+                  ))
+                : null}
             </tbody>
           </table>
         </div>
