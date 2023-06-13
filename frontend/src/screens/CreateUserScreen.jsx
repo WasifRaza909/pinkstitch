@@ -19,17 +19,17 @@ function CreateUserScreen() {
     (state) => state.user
   );
 
-  useEffect(() => {
-    if (isError) {
-      return window.alert(message);
-    }
-  }, [navigate, dispatch]);
+  // useEffect(() => {
+  //   if (isError) {
+  //     return window.alert(message);
+  //   }
+  // }, [navigate, dispatch]);
 
   const onSubmit = (e) => {
     e.preventDefault();
 
     if (password !== confirmPassword) {
-      return window.alert("Passwords do not matched!");
+      return window.alert("Passwords do not match!");
     } else {
       const user = {
         name,
@@ -42,10 +42,12 @@ function CreateUserScreen() {
 
       dispatch(createUser(user));
 
-      if (isSuccess) {
+      if (isError) {
+        return window.alert(message);
+      }
+
+      if (isSuccess && !isError) {
         navigate("/admin/users");
-      } else {
-        return;
       }
     }
 

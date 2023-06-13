@@ -69,11 +69,11 @@ function Sidebar() {
             <Link to="/admin/users">Users</Link>
           </li>
           <li>
-            <i class="fas fa-solid fa-user-tag"></i>
+            <i className="fas fa-solid fa-user-tag"></i>
             <Link to="/admin/roles">Roles</Link>
           </li>
           <li>
-            <i class="fas fa-user-tie"></i>
+            <i className="fas fa-user-tie"></i>
             <Link to="/admin/agents">Agents</Link>
           </li>
           {/* <li>

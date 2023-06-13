@@ -13,6 +13,7 @@ function UsersScreen() {
     if (window.confirm("Are you sure?")) {
       dispatch(deleteUser(id));
     }
+
     return;
   };
 
@@ -63,7 +64,7 @@ function UsersScreen() {
                         </button>
                         <button
                           onClick={() => {
-                            onDelete(user.SNo);
+                            onDelete(user._id);
                           }}
                         >
                           <i className="fas fa-trash"></i>

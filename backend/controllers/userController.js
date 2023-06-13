@@ -29,13 +29,13 @@ const registerUser = asyncHandler(async (req, res) => {
 
   if (newUser) {
     res.status(201).json({
-      user: newUser._id,
+      _id: newUser._id,
       name,
       email,
       contact,
       status,
       role: roleObj,
-      token: generateToken(user._id),
+      token: generateToken(newUser._id),
     });
   } else {
     res.status(400);
@@ -119,7 +119,10 @@ const deleteUser = asyncHandler(async (req, res) => {
   await User.deleteOne({ _id: req.params.id });
 
   res.status(200);
-  res.json({ message: "User Deleted" });
+  res.json({
+    _id: req.params.id,
+    message: "User Deleted",
+  });
 });
 
 // @desc    Get all users

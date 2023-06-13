@@ -11,8 +11,9 @@ function EditUserScreen() {
   // const [confirmPassword, setConfirmPassword] = useState("");
   const [role, setRole] = useState("");
   const [status, setStatus] = useState("");
+  const [options, setOptions] = useState(["Developer", "Admin", "Manager"]);
 
-  const { user, isSuccess, isError, message } = useSelector(
+  const { isSuccess, isError, message, isLoading, user } = useSelector(
     (state) => state.user
   );
 
@@ -49,12 +50,6 @@ function EditUserScreen() {
 
     dispatch(updateUser(user));
 
-    // if (isSuccess) {
-    //   navigate("/admin/users");
-    // } else {
-    //   return;
-    // }
-
     setName("");
     setContact("");
     setEmail("");
@@ -62,6 +57,12 @@ function EditUserScreen() {
     // setConfirmPassword("");
     setRole("Manager");
     setStatus("active");
+
+    if (isSuccess) {
+      navigate("/admin/users");
+    } else {
+      return;
+    }
   };
 
   return (
@@ -133,9 +134,17 @@ function EditUserScreen() {
                     value={role}
                     onChange={(e) => setRole(e.target.value)}
                   >
-                    <option value="Manager">Manager</option>
-                    <option value="Admin">Admin</option>
-                    <option value="Developer">Developer</option>
+                    {user && user.role && (
+                      <option value={user.role.role}>{user.role.role}</option>
+                    )}
+
+                    {options
+                      .filter((option) => option !== user?.role?.role)
+                      .map((option) => (
+                        <option key={option} value={option}>
+                          {option}
+                        </option>
+                      ))}
                   </select>
                 </label>
               </div>
