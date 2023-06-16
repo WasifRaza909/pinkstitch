@@ -1,8 +1,30 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import CreateRoleModal from "../components/CreateRoleModal";
+import { useDispatch, useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
+import {
+  getRolePermissions,
+  reset,
+} from "../features/rolePermissions/rolePermissionSlice";
 
 function RolesScreen() {
   const [modal, setModal] = useState(false);
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+
+  const { rolePermissions } = useSelector((state) => state.rolePermission);
+
+  const onDelete = (id) => {
+    console.log(id);
+  };
+
+  useEffect(() => {
+    dispatch(getRolePermissions());
+
+    return () => {
+      dispatch(reset());
+    };
+  }, []);
 
   return (
     <>
@@ -25,7 +47,7 @@ function RolesScreen() {
 
           <ul>
             <li>
-              <h5>S.No</h5>
+              <h5>Id</h5>
             </li>
 
             <li>
@@ -35,7 +57,7 @@ function RolesScreen() {
               <h5>Action</h5>
             </li>
           </ul>
-          <ul>
+          {/* <ul>
             <li>1</li>
             <li>Admin</li>
             <li>
@@ -46,7 +68,30 @@ function RolesScreen() {
                 <i className="fas fa-bell"></i>
               </button>
             </li>
-          </ul>
+          </ul> */}
+          {rolePermissions &&
+            rolePermissions.map((rolePermission) => (
+              <ul>
+                <li>{rolePermission.role._id}</li>
+                <li>{rolePermission.role.role}</li>
+                <li>
+                  <button
+                    onClick={() =>
+                      navigate(`/admin/roles/edit/${rolePermission._id}`)
+                    }
+                  >
+                    <i className="fas fa-edit"></i>
+                  </button>
+                  <button
+                    onClick={() => {
+                      onDelete(rolePermission.role._id);
+                    }}
+                  >
+                    <i className="fas fa-bell"></i>
+                  </button>
+                </li>
+              </ul>
+            ))}
         </div>
       </div>
       <div style={{ display: `${modal === true ? "block" : "none"}` }}>

@@ -15,17 +15,18 @@ function CreateUserScreen() {
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
-  const { isSuccess, isError, message, isLoading, users } = useSelector(
+  const { isSuccess, isError, message, isLoading, user } = useSelector(
     (state) => state.user
   );
 
-  // useEffect(() => {
-  //   if (isError) {
-  //     return window.alert(message);
-  //   }
-  // }, [navigate, dispatch]);
+  useEffect(() => {
+    if (isError) {
+      window.alert(message);
+      return dispatch(reset());
+    }
+  }, []);
 
-  const onSubmit = (e) => {
+  const onSubmit = async (e) => {
     e.preventDefault();
 
     if (password !== confirmPassword) {
@@ -40,24 +41,20 @@ function CreateUserScreen() {
         status,
       };
 
-      dispatch(createUser(user));
+      await dispatch(createUser(user));
 
-      if (isError) {
-        return window.alert(message);
-      }
+      setName("");
+      setContact("");
+      setEmail("");
+      setPassword("");
+      setConfirmPassword("");
+      setRole("Manager");
+      setStatus("active");
 
       if (isSuccess && !isError) {
         navigate("/admin/users");
       }
     }
-
-    setName("");
-    setContact("");
-    setEmail("");
-    setPassword("");
-    setConfirmPassword("");
-    setRole("Manager");
-    setStatus("active");
   };
 
   return (

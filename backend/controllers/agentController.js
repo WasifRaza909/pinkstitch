@@ -101,6 +101,7 @@ const deleteAgent = asyncHandler(async (req, res) => {
   if (updAgent) {
     res.status(201).json({
       message: "Agent Deleted",
+      _id: req.params.id,
     });
   } else {
     res.status(400);

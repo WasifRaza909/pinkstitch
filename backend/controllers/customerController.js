@@ -12,7 +12,7 @@ const createCustomer = asyncHandler(async (req, res) => {
   if (customerExists) {
     res.status(400);
     res.json({
-      message: "User already exists",
+      message: "Customer already exists",
     });
   }
 
@@ -21,14 +21,12 @@ const createCustomer = asyncHandler(async (req, res) => {
     email,
     contact,
     dateOfBirth,
-    customerAddresses: [
-      {
-        address: customerAddresses[0].address,
-        isPrimary: customerAddresses[0].isPrimary,
-        location: customerAddresses[0].location,
-        cityId: customerAddresses[0].cityId,
-      },
-    ],
+    customerAddresses: customerAddresses.map((address) => ({
+      address: address.address,
+      isPrimary: address.isPrimary,
+      location: address.location,
+      cityId: address.cityId,
+    })),
   };
 
   const customerCreated = await Customer.create(newCustomer);
@@ -88,7 +86,7 @@ const updateCustomer = asyncHandler(async (req, res) => {
 });
 
 // @desc    Delete customer
-// @route   DELETE /api/customer/:id
+// @route   DELETE /api/customers/:id
 // @access  Private
 const deleteCustomer = asyncHandler(async (req, res) => {
   const customerExists = await Customer.findById(req.params.id);
@@ -124,7 +122,9 @@ const deleteCustomer = asyncHandler(async (req, res) => {
 const getCustomers = asyncHandler(async (req, res) => {
   const customers = await Customer.find();
 
-  const filterCustomers = customers.filter((agent) => agent.deletedAt === null);
+  const filterCustomers = customers.filter(
+    (customer) => customer.deletedAt === null
+  );
 
   if (!customers || !filterCustomers) {
     res.status(404).json({

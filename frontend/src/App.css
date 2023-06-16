@@ -1,5 +1,10 @@
 :root {
-  --black-color: #000;
+  --black-color: #000000;
+  --white-color: #ffffff;
+  --off-white-color: #fafafa;
+  --shocking-pink-color: #e44b8b;
+  --light-gray: #dbdbdb;
+  --cornflower-blue: #7f83a9;
   --font-family: "Poppins", sans-serif;
 }
 
@@ -11,7 +16,7 @@
 
 body {
   font-family: var(--font-family);
-  background-color: #fafafa;
+  background-color: var(--off-white-color);
 }
 
 a {
@@ -41,8 +46,8 @@ li {
 /* Sidebar */
 .sidebar {
   width: 17%;
-  background-color: #ffffff;
-  box-shadow: 0px 0px 8px #dbdbdb;
+  background-color: var(--white-color);
+  box-shadow: 0px 0px 8px var(--light-gray);
   border-radius: 15px;
   height: 100%;
   overflow-y: auto;
@@ -60,6 +65,7 @@ li {
 
 .logo {
   padding-bottom: 1rem;
+  cursor: pointer;
 }
 
 .logo img {
@@ -67,11 +73,11 @@ li {
 }
 
 .sidebar h2 {
-  border-top: 1px solid #e44b8b;
-  border-bottom: 1px solid #e44b8b;
+  border-top: 1px solid var(--shocking-pink-color);
+  border-bottom: 1px solid var(--shocking-pink-color);
   width: 100%;
   text-align: center;
-  color: #e44b8b;
+  color: var(--shocking-pink-color);
   font-weight: 500;
   padding: 0.4rem 0;
   font-size: 20px;
@@ -86,27 +92,27 @@ li {
   display: flex;
   align-items: center;
   padding: 0.9rem 1rem;
-  color: #7f83a9;
+  color: var(--cornflower-blue);
   border-left: 4px solid transparent;
 }
 
 .sidebar ul li a {
-  color: #7f83a9;
+  color: var(--cornflower-blue);
 }
 
 .sidebar ul li:hover {
-  border-left: 4px solid #e44b8b;
+  border-left: 4px solid var(--shocking-pink-color);
   cursor: pointer;
   border-radius: 4px;
-  color: #e44b8b;
+  color: var(--shocking-pink-color);
 }
 
 .sidebar ul li:hover > a {
-  color: #e44b8b;
+  color: var(--shocking-pink-color);
 }
 
 .sidebar ul li a:hover {
-  color: #e44b8b;
+  color: var(--shocking-pink-color);
 }
 
 .sidebar ul li i {
@@ -132,8 +138,8 @@ li {
 }
 
 .roles_screen {
-  background-color: #ffffff;
-  box-shadow: 0px 0px 8px #dbdbdb;
+  background-color: var(--white-color);
+  box-shadow: 0px 0px 8px var(--light-gray);
   border-radius: 15px;
   padding: 30px 50px;
   height: 100%;
@@ -141,7 +147,7 @@ li {
 }
 
 .roles_screen h1 {
-  color: #e44b8b;
+  color: var(--shocking-pink-color);
   font-weight: 600;
 }
 
@@ -152,12 +158,12 @@ li {
 }
 
 .roles_screen_container div:first-child button {
-  background-color: #e44b8b;
+  background-color: var(--shocking-pink-color);
   border: none;
   padding: 1rem 1rem;
   border-radius: 5px;
   font-size: 16px;
-  color: #ffffff;
+  color: var(--white-color);
   font-weight: 500;
   letter-spacing: 1px;
   cursor: pointer;
@@ -170,7 +176,7 @@ li {
 
 .roles_screen_container input {
   border: none;
-  background-color: #fafafa;
+  background-color: var(--off-white-color);
   padding: 1rem;
   border-radius: 5px;
   width: 300px;
@@ -189,7 +195,7 @@ li {
 
 .roles_screen_container ul li {
   width: 33%;
-  border-bottom: 1px solid #fafafa;
+  border-bottom: 1px solid var(--off-white-color);
   padding: 1rem 0;
 }
 
@@ -205,13 +211,13 @@ li {
 }
 
 .roles_screen_container ul li button:first-child {
-  background-color: #e44b8b;
-  color: #ffffff;
+  background-color: var(--shocking-pink-color);
+  color: var(--white-color);
 }
 
 .roles_screen_container ul li button:last-child {
-  background-color: #7f83a9;
-  color: #ffffff;
+  background-color: var(--cornflower-blue);
+  color: var(--white-color);
 }
 
 .roles_screen_container ul li button:hover {
@@ -221,7 +227,7 @@ li {
 .roles_screen .close_modal {
   position: absolute;
   z-index: 2;
-  color: #fff;
+  color: var(--white-color);
   right: 4%;
 }
 
@@ -232,7 +238,7 @@ li {
 /* Create Role Modal */
 .create_role_modal {
   padding: 30px;
-  background-color: #fff;
+  background-color: var(--white-color);
   border-radius: 10px;
   display: inline-block;
   position: absolute;
@@ -251,7 +257,7 @@ li {
   width: 350px;
   height: 45px;
   border: none;
-  background-color: #fafafa;
+  background-color: var(--off-white-color);
   border-radius: 5px;
 }
 
@@ -273,8 +279,8 @@ li {
   justify-self: flex-end;
   margin-left: auto;
   margin-right: 0;
-  background-color: #e44b8b;
-  color: #ffffff;
+  background-color: var(--shocking-pink-color);
+  color: var(--white-color);
   font-weight: 600;
   margin-top: 0.7rem;
   cursor: pointer;
@@ -282,8 +288,8 @@ li {
 
 /* Role Permissions */
 .role_permissions {
-  background-color: #ffffff;
-  box-shadow: 0px 0px 8px #dbdbdb;
+  background-color: var(--white-color);
+  box-shadow: 0px 0px 8px var(--light-gray);
   border-radius: 15px;
   padding: 30px 50px;
   height: 100%;
@@ -292,8 +298,14 @@ li {
 }
 
 .role_permissions h1 {
-  color: #e44b8b;
+  color: var(--shocking-pink-color);
   font-weight: 600;
+}
+
+.role_permissions h2 {
+  color: var(--black-color);
+  font-weight: 700;
+  margin: 1rem 0;
 }
 
 .role_permissions table {
@@ -302,14 +314,14 @@ li {
 }
 
 .role_permissions table thead {
-  color: #000;
+  color: var(--black-color);
   margin-bottom: 1rem;
-  border-bottom: 1px solid #fafafa;
+  border-bottom: 1px solid var(--off-white-color);
 }
 
 .role_permissions table tr td:first-child {
   width: 25%;
-  color: #000;
+  color: var(--black-color);
   font-weight: 500;
   font-size: 14px;
 }
@@ -323,7 +335,7 @@ li {
 .role_permissions tr label {
   font-size: 14px;
   cursor: pointer;
-  color: #7f83a9;
+  color: var(--cornflower-blue);
   font-weight: 400;
   margin: 0.5rem 0;
   display: flex;
@@ -345,7 +357,7 @@ li {
 }
 
 .role_permissions tr:not(:last-child) {
-  border-bottom: 1px solid #fafafa;
+  border-bottom: 1px solid var(--off-white-color);
 }
 
 .role_permissions form button {
@@ -353,8 +365,8 @@ li {
   border: none;
   border-radius: 3px;
   height: 45px;
-  background-color: #e44b8b;
-  color: #ffffff;
+  background-color: var(--shocking-pink-color);
+  color: var(--white-color);
   font-weight: 600;
   margin-top: 1rem;
   cursor: pointer;
@@ -365,15 +377,16 @@ li {
 
 /* User Screen */
 .users_screen {
-  background-color: #ffffff;
-  box-shadow: 0px 0px 8px #dbdbdb;
+  background-color: var(--white-color);
+  box-shadow: 0px 0px 8px var(--light-gray);
   border-radius: 15px;
   padding: 30px 50px;
   height: 100%;
+  overflow-y: auto;
 }
 
 .users_screen h1 {
-  color: #e44b8b;
+  color: var(--shocking-pink-color);
   font-weight: 600;
 }
 
@@ -384,12 +397,12 @@ li {
 }
 
 .users_screen_container div:first-child button {
-  background-color: #e44b8b;
+  background-color: var(--shocking-pink-color);
   border: none;
   padding: 1rem 1rem;
   border-radius: 5px;
   font-size: 16px;
-  color: #ffffff;
+  color: var(--white-color);
   font-weight: 500;
   letter-spacing: 1px;
 }
@@ -401,7 +414,7 @@ li {
 
 .users_screen_container input {
   border: none;
-  background-color: #fafafa;
+  background-color: var(--off-white-color);
   padding: 1rem;
   border-radius: 5px;
   width: 300px;
@@ -424,7 +437,7 @@ li {
 
 .users_screen_container tbody td {
   padding: 1rem 0;
-  border-top: 1px solid #fafafa;
+  border-top: 1px solid var(--off-white-color);
 }
 
 .users_screen_container tbody tr:last-child td {
@@ -436,27 +449,27 @@ li {
   margin-right: 0.6rem;
   border: none;
   border-radius: 3px;
-  background-color: #e44b8b;
-  color: #ffffff;
+  background-color: var(--shocking-pink-color);
+  color: var(--white-color);
   cursor: pointer;
 }
 
 .users_screen_container button:last-child {
-  background-color: #7f83a9;
-  color: #fafafa;
+  background-color: var(--cornflower-blue);
+  color: var(--off-white-color);
 }
 
 /* Create User Screen */
 .create_user_screen {
-  background-color: #ffffff;
-  box-shadow: 0px 0px 8px #dbdbdb;
+  background-color: var(--white-color);
+  box-shadow: 0px 0px 8px var(--light-gray);
   border-radius: 15px;
   padding: 30px 50px;
   height: auto;
 }
 
 .create_user_screen h1 {
-  color: #e44b8b;
+  color: var(--shocking-pink-color);
   font-weight: 600;
 }
 
@@ -488,7 +501,7 @@ li {
 
 .create_user_screen input {
   border: none;
-  background-color: #fafafa;
+  background-color: var(--off-white-color);
   padding: 1rem;
   border-radius: 5px;
   width: 100%;
@@ -501,7 +514,7 @@ li {
 
 .create_user_screen select {
   border: none;
-  background-color: #fafafa;
+  background-color: var(--off-white-color);
   padding: 1rem;
   border-radius: 5px;
   width: 100%;
@@ -529,27 +542,27 @@ li {
   margin-right: 0.6rem;
   border: none;
   border-radius: 3px;
-  background-color: #e44b8b;
-  color: #ffffff;
+  background-color: var(--shocking-pink-color);
+  color: var(--white-color);
   cursor: pointer;
 }
 
 .create_user_screen .cta_buttons button:last-child {
-  background-color: #7f83a9;
-  color: #ffffff;
+  background-color: var(--cornflower-blue);
+  color: var(--white-color);
 }
 
 /* Edit User Screen */
 .edit_user_screen {
-  background-color: #ffffff;
-  box-shadow: 0px 0px 8px #dbdbdb;
+  background-color: var(--white-color);
+  box-shadow: 0px 0px 8px var(--light-gray);
   border-radius: 15px;
   padding: 30px 50px;
   height: auto;
 }
 
 .edit_user_screen h1 {
-  color: #e44b8b;
+  color: var(--shocking-pink-color);
   font-weight: 600;
 }
 
@@ -581,7 +594,7 @@ li {
 
 .edit_user_screen input {
   border: none;
-  background-color: #fafafa;
+  background-color: var(--off-white-color);
   padding: 1rem;
   border-radius: 5px;
   width: 100%;
@@ -594,7 +607,7 @@ li {
 
 .edit_user_screen select {
   border: none;
-  background-color: #fafafa;
+  background-color: var(--off-white-color);
   padding: 1rem;
   border-radius: 5px;
   width: 100%;
@@ -622,14 +635,14 @@ li {
   margin-right: 0.6rem;
   border: none;
   border-radius: 3px;
-  background-color: #e44b8b;
-  color: #ffffff;
+  background-color: var(--shocking-pink-color);
+  color: var(--white-color);
   cursor: pointer;
 }
 
 .edit_user_screen .cta_buttons button:last-child {
-  background-color: #7f83a9;
-  color: #ffffff;
+  background-color: var(--cornflower-blue);
+  color: var(--white-color);
 }
 
 /* Customers Screen */
@@ -651,8 +664,8 @@ li {
 }
 
 .customers_screen {
-  background-color: #ffffff;
-  box-shadow: 0px 0px 8px #dbdbdb;
+  background-color: var(--white-color);
+  box-shadow: 0px 0px 8px var(--light-gray);
   border-radius: 15px;
   padding: 30px 50px;
   height: 100%;
@@ -660,7 +673,7 @@ li {
 }
 
 .customers_screen h1 {
-  color: #e44b8b;
+  color: var(--shocking-pink-color);
   font-weight: 600;
 }
 
@@ -671,12 +684,12 @@ li {
 }
 
 .customers_screen_container div:first-child button {
-  background-color: #e44b8b;
+  background-color: var(--shocking-pink-color);
   border: none;
   padding: 1rem 1rem;
   border-radius: 5px;
   font-size: 16px;
-  color: #ffffff;
+  color: var(--white-color);
   font-weight: 500;
   letter-spacing: 1px;
   cursor: pointer;
@@ -688,7 +701,7 @@ li {
 
 .customers_screen_container input {
   border: none;
-  background-color: #fafafa;
+  background-color: var(--off-white-color);
   padding: 1rem;
   border-radius: 5px;
   width: 300px;
@@ -711,7 +724,7 @@ li {
 
 .customers_screen_container tbody td {
   padding: 1rem 0;
-  border-top: 1px solid #fafafa;
+  border-top: 1px solid var(--off-white-color);
 }
 
 .customers_screen_container tbody tr:last-child td {
@@ -723,8 +736,8 @@ li {
   margin-right: 0.6rem;
   border: none;
   border-radius: 3px;
-  background-color: #7f83a9;
-  color: #ffffff;
+  background-color: var(--cornflower-blue);
+  color: var(--white-color);
   cursor: pointer;
 }
 
@@ -733,20 +746,20 @@ li {
   margin-right: 0.6rem;
   border: none;
   border-radius: 3px;
-  background-color: #e44b8b;
-  color: #ffffff;
+  background-color: var(--shocking-pink-color);
+  color: var(--white-color);
   cursor: pointer;
 }
 
 .customers_screen_container td:last-child button:last-child {
-  background-color: #7f83a9;
-  color: #fafafa;
+  background-color: var(--cornflower-blue);
+  color: var(--off-white-color);
 }
 
 .customers_screen .close_modal {
   position: absolute;
   z-index: 2;
-  color: #fff;
+  color: var(--white-color);
   right: 4%;
 }
 
@@ -758,7 +771,7 @@ li {
 .customer_address_modal {
   width: 1000px;
   padding: 30px;
-  background-color: #fff;
+  background-color: var(--white-color);
   border-radius: 10px;
   display: inline-block;
   position: absolute;
@@ -783,7 +796,7 @@ li {
   display: flex;
   flex-direction: row;
   align-items: center;
-  justify-content: center;
+  justify-content: space-between;
 }
 
 .customer_address_modal ul li h4 {
@@ -791,7 +804,7 @@ li {
 }
 
 .customer_address_modal ul li div p {
-  background-color: #fafafa;
+  background-color: var(--off-white-color);
   height: 45px;
   border-radius: 5px;
   margin-right: 2rem;
@@ -811,23 +824,23 @@ li {
   justify-self: flex-end;
   margin-left: auto;
   margin-right: 0;
-  background-color: #e44b8b;
-  color: #ffffff;
+  background-color: var(--shocking-pink-color);
+  color: var(--white-color);
   font-weight: 600;
   cursor: pointer;
 }
 
 /* Create Customer Screen */
 .create_customer_screen {
-  background-color: #ffffff;
-  box-shadow: 0px 0px 8px #dbdbdb;
+  background-color: var(--white-color);
+  box-shadow: 0px 0px 8px var(--light-gray);
   border-radius: 15px;
   padding: 30px 50px;
   height: auto;
 }
 
 .create_customer_screen h1 {
-  color: #e44b8b;
+  color: var(--shocking-pink-color);
   font-weight: 600;
 }
 
@@ -847,8 +860,8 @@ li {
   padding: 1rem 1.8rem;
   border: none;
   border-radius: 3px;
-  background-color: #e44b8b;
-  color: #ffffff;
+  background-color: var(--shocking-pink-color);
+  color: var(--white-color);
   cursor: pointer;
   width: 200px;
   margin-left: auto;
@@ -889,7 +902,7 @@ li {
 
 .create_customer_screen input {
   border: none;
-  background-color: #fafafa;
+  background-color: var(--off-white-color);
   padding: 1rem;
   border-radius: 5px;
   width: 100%;
@@ -902,7 +915,7 @@ li {
 
 .create_customer_screen select {
   border: none;
-  background-color: #fafafa;
+  background-color: var(--off-white-color);
   padding: 1rem;
   border-radius: 5px;
   width: 100%;
@@ -930,27 +943,27 @@ li {
   margin-right: 0.6rem;
   border: none;
   border-radius: 3px;
-  background-color: #e44b8b;
-  color: #ffffff;
+  background-color: var(--shocking-pink-color);
+  color: var(--white-color);
   cursor: pointer;
 }
 
 .create_customer_screen .cta_buttons button:last-child {
-  background-color: #7f83a9;
-  color: #ffffff;
+  background-color: var(--cornflower-blue);
+  color: var(--white-color);
 }
 
 /* Edit Customer Screen */
 .edit_customer_screen {
-  background-color: #ffffff;
-  box-shadow: 0px 0px 8px #dbdbdb;
+  background-color: var(--white-color);
+  box-shadow: 0px 0px 8px var(--light-gray);
   border-radius: 15px;
   padding: 30px 50px;
   height: auto;
 }
 
 .edit_customer_screen h1 {
-  color: #e44b8b;
+  color: var(--shocking-pink-color);
   font-weight: 600;
 }
 
@@ -970,8 +983,8 @@ li {
   padding: 1rem 1.8rem;
   border: none;
   border-radius: 3px;
-  background-color: #e44b8b;
-  color: #ffffff;
+  background-color: var(--shocking-pink-color);
+  color: var(--white-color);
   cursor: pointer;
   width: 200px;
   margin-left: auto;
@@ -1000,7 +1013,7 @@ li {
 
 .edit_customer_screen input {
   border: none;
-  background-color: #fafafa;
+  background-color: var(--off-white-color);
   padding: 1rem;
   border-radius: 5px;
   width: 100%;
@@ -1013,7 +1026,7 @@ li {
 
 .edit_customer_screen select {
   border: none;
-  background-color: #fafafa;
+  background-color: var(--off-white-color);
   padding: 1rem;
   border-radius: 5px;
   width: 100%;
@@ -1041,14 +1054,14 @@ li {
   margin-right: 0.6rem;
   border: none;
   border-radius: 3px;
-  background-color: #e44b8b;
-  color: #ffffff;
+  background-color: var(--shocking-pink-color);
+  color: var(--white-color);
   cursor: pointer;
 }
 
 .edit_customer_screen .cta_buttons button:last-child {
-  background-color: #7f83a9;
-  color: #ffffff;
+  background-color: var(--cornflower-blue);
+  color: var(--white-color);
 }
 
 /* Agents Screen */
@@ -1070,8 +1083,8 @@ li {
 }
 
 .agents_screen {
-  background-color: #ffffff;
-  box-shadow: 0px 0px 8px #dbdbdb;
+  background-color: var(--white-color);
+  box-shadow: 0px 0px 8px var(--light-gray);
   border-radius: 15px;
   padding: 30px 50px;
   height: 100%;
@@ -1079,7 +1092,7 @@ li {
 }
 
 .agents_screen h1 {
-  color: #e44b8b;
+  color: var(--shocking-pink-color);
   font-weight: 600;
 }
 
@@ -1090,12 +1103,12 @@ li {
 }
 
 .agents_screen_container div:first-child button {
-  background-color: #e44b8b;
+  background-color: var(--shocking-pink-color);
   border: none;
   padding: 1rem 1rem;
   border-radius: 5px;
   font-size: 16px;
-  color: #ffffff;
+  color: var(--white-color);
   font-weight: 500;
   letter-spacing: 1px;
   cursor: pointer;
@@ -1107,7 +1120,7 @@ li {
 
 .agents_screen_container input {
   border: none;
-  background-color: #fafafa;
+  background-color: var(--off-white-color);
   padding: 1rem;
   border-radius: 5px;
   width: 300px;
@@ -1130,7 +1143,7 @@ li {
 
 .agents_screen_container tbody td {
   padding: 1rem 0;
-  border-top: 1px solid #fafafa;
+  border-top: 1px solid var(--off-white-color);
 }
 
 .agents_screen_container tbody tr:last-child td {
@@ -1142,8 +1155,8 @@ li {
   margin-right: 0.6rem;
   border: none;
   border-radius: 3px;
-  background-color: #7f83a9;
-  color: #ffffff;
+  background-color: var(--cornflower-blue);
+  color: var(--white-color);
   cursor: pointer;
 }
 
@@ -1152,20 +1165,20 @@ li {
   margin-right: 0.6rem;
   border: none;
   border-radius: 3px;
-  background-color: #e44b8b;
-  color: #ffffff;
+  background-color: var(--shocking-pink-color);
+  color: var(--white-color);
   cursor: pointer;
 }
 
 .agents_screen_container td:last-child button:last-child {
-  background-color: #7f83a9;
-  color: #fafafa;
+  background-color: var(--cornflower-blue);
+  color: var(--off-white-color);
 }
 
 .agents_screen .close_modal {
   position: absolute;
   z-index: 2;
-  color: #fff;
+  color: var(--white-color);
   right: 4%;
 }
 
@@ -1177,7 +1190,7 @@ li {
 .agent_preview_modal {
   width: 1000px;
   padding: 30px;
-  background-color: #fff;
+  background-color: var(--white-color);
   border-radius: 10px;
   display: inline-block;
   position: absolute;
@@ -1190,6 +1203,7 @@ li {
 .agent_preview_modal h3 {
   margin-bottom: 2rem;
   font-size: 24px;
+  color: var(--shocking-pink-color);
 }
 
 .agent_preview_modal ul {
@@ -1211,10 +1225,11 @@ li {
 
 .agent_preview_modal ul li h4 {
   margin-bottom: 0.6rem;
+  font-weight: 600;
 }
 
 .agent_preview_modal ul li div p {
-  background-color: #fafafa;
+  background-color: var(--off-white-color);
   height: 45px;
   border-radius: 5px;
   display: flex;
@@ -1232,8 +1247,8 @@ li {
   justify-self: flex-end;
   margin-left: auto;
   margin-right: 0;
-  background-color: #e44b8b;
-  color: #ffffff;
+  background-color: var(--shocking-pink-color);
+  color: var(--white-color);
   font-weight: 600;
   cursor: pointer;
 }
@@ -1256,15 +1271,15 @@ li {
 }
 /* Edit Agent Screen */
 .edit_agent_screen {
-  background-color: #ffffff;
-  box-shadow: 0px 0px 8px #dbdbdb;
+  background-color: var(--white-color);
+  box-shadow: 0px 0px 8px var(--light-gray);
   border-radius: 15px;
   padding: 30px 50px;
   height: auto;
 }
 
 .edit_agent_screen h1 {
-  color: #e44b8b;
+  color: var(--shocking-pink-color);
   font-weight: 600;
 }
 
@@ -1284,8 +1299,8 @@ li {
   padding: 1rem 1.8rem;
   border: none;
   border-radius: 3px;
-  background-color: #e44b8b;
-  color: #ffffff;
+  background-color: var(--shocking-pink-color);
+  color: var(--white-color);
   cursor: pointer;
   width: 200px;
   margin-left: auto;
@@ -1314,7 +1329,7 @@ li {
 
 .edit_agent_screen input {
   border: none;
-  background-color: #fafafa;
+  background-color: var(--off-white-color);
   padding: 1rem;
   border-radius: 5px;
   width: 100%;
@@ -1327,7 +1342,7 @@ li {
 
 .edit_agent_screen select {
   border: none;
-  background-color: #fafafa;
+  background-color: var(--off-white-color);
   padding: 1rem;
   border-radius: 5px;
   width: 100%;
@@ -1355,14 +1370,14 @@ li {
   margin-right: 0.6rem;
   border: none;
   border-radius: 3px;
-  background-color: #e44b8b;
-  color: #ffffff;
+  background-color: var(--shocking-pink-color);
+  color: var(--white-color);
   cursor: pointer;
 }
 
 .edit_agent_screen .cta_buttons button:last-child {
-  background-color: #7f83a9;
-  color: #ffffff;
+  background-color: var(--cornflower-blue);
+  color: var(--white-color);
 }
 
 .edit_agent_screen .address_input {
@@ -1375,15 +1390,15 @@ li {
 
 /* Create Agent Screen */
 .create_agent_screen {
-  background-color: #ffffff;
-  box-shadow: 0px 0px 8px #dbdbdb;
+  background-color: var(--white-color);
+  box-shadow: 0px 0px 8px var(--light-gray);
   border-radius: 15px;
   padding: 30px 50px;
   height: auto;
 }
 
 .create_agent_screen h1 {
-  color: #e44b8b;
+  color: var(--shocking-pink-color);
   font-weight: 600;
 }
 
@@ -1403,8 +1418,8 @@ li {
   padding: 1rem 1.8rem;
   border: none;
   border-radius: 3px;
-  background-color: #e44b8b;
-  color: #ffffff;
+  background-color: var(--shocking-pink-color);
+  color: var(--white-color);
   cursor: pointer;
   width: 200px;
   margin-left: auto;
@@ -1433,7 +1448,7 @@ li {
 
 .create_agent_screen input {
   border: none;
-  background-color: #fafafa;
+  background-color: var(--off-white-color);
   padding: 1rem;
   border-radius: 5px;
   width: 100%;
@@ -1446,7 +1461,7 @@ li {
 
 .create_agent_screen select {
   border: none;
-  background-color: #fafafa;
+  background-color: var(--off-white-color);
   padding: 1rem;
   border-radius: 5px;
   width: 100%;
@@ -1474,14 +1489,14 @@ li {
   margin-right: 0.6rem;
   border: none;
   border-radius: 3px;
-  background-color: #e44b8b;
-  color: #ffffff;
+  background-color: var(--shocking-pink-color);
+  color: var(--white-color);
   cursor: pointer;
 }
 
 .create_agent_screen .cta_buttons button:last-child {
-  background-color: #7f83a9;
-  color: #ffffff;
+  background-color: var(--cornflower-blue);
+  color: var(--white-color);
 }
 
 .create_agent_screen .address_input {

@@ -58,11 +58,11 @@ function EditUserScreen() {
     setRole("Manager");
     setStatus("active");
 
-    if (isSuccess) {
-      navigate("/admin/users");
-    } else {
-      return;
-    }
+    // if (isSuccess && !isLoading) {
+    //   navigate("/admin/users");
+    // } else {
+    //   return;
+    // }
   };
 
   return (

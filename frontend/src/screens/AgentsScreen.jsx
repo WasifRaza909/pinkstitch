@@ -1,21 +1,32 @@
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import { useState } from "react";
-import { deleteUser } from "../features/users/userSlice";
-import CustomerAddressModal from "../components/CustomerAddressModal";
+import { useEffect, useState } from "react";
 import AgentPreviewModal from "../components/AgentPreviewModal";
+import { deleteAgent, getAgents } from "../features/agents/agentSlice";
 
 function AgentsScreen() {
-  const [agentPreviewModal, setagentPreviewModal] = useState(false);
+  const [agentPreviewModal, setAgentPreviewModal] = useState(false);
+  const [selectedAgentId, setSelectedAgentId] = useState(null);
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
+  const { agents } = useSelector((state) => state.agent);
+
   const onDelete = (id) => {
     if (window.confirm("Are you sure?")) {
-      dispatch(deleteUser(id));
+      dispatch(deleteAgent(id));
     }
     return;
   };
+
+  const onAgentPreview = (id) => {
+    setSelectedAgentId(id);
+    setAgentPreviewModal(true);
+  };
+
+  useEffect(() => {
+    dispatch(getAgents());
+  }, [dispatch]);
 
   return (
     <>
@@ -26,7 +37,7 @@ function AgentsScreen() {
       >
         <i
           className="fas fa-times fa-2x close_modal"
-          onClick={() => setagentPreviewModal(false)}
+          onClick={() => setAgentPreviewModal(false)}
           style={{
             display: `${agentPreviewModal === true ? "block" : "none"}`,
           }}
@@ -52,41 +63,53 @@ function AgentsScreen() {
               </tr>
             </thead>
             <tbody>
-              <tr>
-                <td>1</td>
-                <td>Wasif Raza</td>
-                <td>+92 1234 567890</td>
-                <td>422011234567890</td>
-                <td>
-                  <button
-                    className="show_address_btn"
-                    onClick={() => setagentPreviewModal(!agentPreviewModal)}
-                  >
-                    Preview Agent
-                  </button>
-                </td>
-                <td>
-                  <button onClick={() => navigate("/admin/agents/edit")}>
-                    <i className="fas fa-edit"></i>
-                  </button>
-                  <button
-                    onClick={() => {
-                      //   onDelete(user.SNo);
-                    }}
-                  >
-                    <i className="fas fa-trash"></i>
-                  </button>
-                </td>
-              </tr>
+              {agents && agents.length > 0
+                ? agents.map((agent) => (
+                    <tr>
+                      <td>{agent._id}</td>
+                      <td>{agent.name}</td>
+                      <td>{agent.contact}</td>
+                      <td>{agent.nic}</td>
+                      <td>
+                        <button
+                          className="show_address_btn"
+                          onClick={() => onAgentPreview(agent._id)}
+                        >
+                          Preview Agent
+                        </button>
+                      </td>
+                      <td>
+                        <button
+                          onClick={() =>
+                            navigate(`/admin/agents/edit/${agent._id}`)
+                          }
+                        >
+                          <i className="fas fa-edit"></i>
+                        </button>
+                        <button
+                          onClick={() => {
+                            onDelete(agent._id);
+                          }}
+                        >
+                          <i className="fas fa-trash"></i>
+                        </button>
+                      </td>
+                    </tr>
+                  ))
+                : null}
             </tbody>
           </table>
         </div>
       </div>
-      <div
-        style={{ display: `${agentPreviewModal === true ? "block" : "none"}` }}
-      >
-        <AgentPreviewModal />
-      </div>
+      {agentPreviewModal && (
+        <div
+          style={{
+            display: `${agentPreviewModal === true ? "block" : "none"}`,
+          }}
+        >
+          <AgentPreviewModal agentId={selectedAgentId} />
+        </div>
+      )}
     </>
   );
 }

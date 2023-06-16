@@ -6,7 +6,7 @@ function Sidebar() {
     <div className="sidebar">
       <div className="sidebar-container">
         <div className="logo">
-          <img src={logo} alt="Pinkstitch logo" />
+          <img to="/admin/users" src={logo} alt="Pinkstitch logo" />
         </div>
 
         <h2>Super Admin</h2>

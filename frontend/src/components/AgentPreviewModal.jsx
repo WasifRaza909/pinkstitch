@@ -1,7 +1,17 @@
+import { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
+import { getAgentById } from "../features/agents/agentSlice";
 
-function AgentPreviewModal() {
+function AgentPreviewModal({ agentId }) {
   const navigate = useNavigate();
+  const dispatch = useDispatch();
+
+  const { agent } = useSelector((state) => state.agent);
+
+  useEffect(() => {
+    dispatch(getAgentById(agentId));
+  }, [dispatch, agentId]);
 
   return (
     <div className="agent_preview_modal">
@@ -10,56 +20,47 @@ function AgentPreviewModal() {
         <li>
           <h4>Full Name</h4>
           <div>
-            <p>Wasif Raza</p>
+            <p>{agent && agent.name}</p>
           </div>
         </li>
         <li>
           <h4>Email</h4>
           <div>
-            <p>wasifraza909@gmail.com</p>
+            <p>{agent && agent.email}</p>
           </div>
         </li>
         <li>
           <h4>NIC</h4>
           <div>
-            <p>422011234567890</p>
+            <p>{agent && agent.nic}</p>
           </div>
         </li>
         <li>
           <h4>Contact</h4>
           <div>
-            <p>1234567890</p>
+            <p>{agent && agent.contact}</p>
           </div>
         </li>
-        <li>
-          <h4>DOB</h4>
-          <div>
-            <p>29 May 2002</p>
-          </div>
-        </li>
-        <li>
-          <h4>Contact</h4>
-          <div>
-            <p>1234567890</p>
-          </div>
-        </li>
+
         <li>
           <h4>Status</h4>
           <div>
-            <p>Active</p>
+            <p>{agent && agent.status}</p>
+          </div>
+        </li>
+
+        <li>
+          <h4>Address</h4>
+          <div>
+            <p>{agent && agent.address}</p>
           </div>
         </li>
         <li className="expertise_list">
           <h4>Expertise</h4>
           <div>
-            <p>1234567890</p>
-            <p>12345678dfsafsafsfa90</p>
-            <p>1234567890</p>
-            <p>1234567890</p>
-            <p>1234567890</p>
-            <p>1234567890</p>
-            <p>1234fffffffffffffffffffffffffffff567890</p>
-            <p>1234567890</p>
+            {agent &&
+              agent.expertise &&
+              agent.expertise.map((exp) => <p>{exp}</p>)}
           </div>
         </li>
       </ul>

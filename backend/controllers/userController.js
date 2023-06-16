@@ -91,7 +91,7 @@ const updateUser = asyncHandler(async (req, res) => {
 
   if (user) {
     res.status(201).json({
-      user: user._id,
+      _id: user._id,
       name,
       email,
       contact,
@@ -135,7 +135,7 @@ const getUsers = asyncHandler(async (req, res) => {
     res.status(200).json(users);
   } else {
     res.status(400);
-    throw new Error("No Permission found");
+    throw new Error("No User found");
   }
 });
 

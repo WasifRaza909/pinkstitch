@@ -12,6 +12,7 @@ import EditCustomerScreen from "./screens/EditCustomerScreen";
 import AgentsScreen from "./screens/AgentsScreen";
 import EditAgentScreen from "./screens/EditAgentScreen";
 import CreateAgentScreen from "./screens/CreateAgentScreen";
+import EditRolePermissionsScreen from "./screens/EditRolePermissionsScreen";
 
 function App() {
   return (
@@ -23,8 +24,12 @@ function App() {
             <Routes>
               <Route path="/admin/roles" element={<RolesScreen />} />
               <Route
-                path="/admin/roles/create"
+                path="/admin/roles/create/:roleName"
                 element={<RolePermissionsScreen />}
+              />
+              <Route
+                path="/admin/roles/edit/:id"
+                element={<EditRolePermissionsScreen />}
               />
               <Route path="/admin/users" element={<UsersScreen />} />
               <Route
@@ -45,7 +50,10 @@ function App() {
                 element={<EditCustomerScreen />}
               />
               <Route path="/admin/agents" element={<AgentsScreen />} />
-              <Route path="/admin/agents/edit" element={<EditAgentScreen />} />
+              <Route
+                path="/admin/agents/edit/:id"
+                element={<EditAgentScreen />}
+              />
               <Route
                 path="/admin/agents/create"
                 element={<CreateAgentScreen />}

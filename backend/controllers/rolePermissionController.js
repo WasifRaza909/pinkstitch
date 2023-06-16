@@ -127,7 +127,7 @@ const getRolePermissionById = asyncHandler(async (req, res) => {
   }
 });
 
-// @desc    Get Role Permission
+// @desc    Get Role Permissions
 // @route   GET /api/rolepermissions
 // @access  Private
 const getRolePermissions = asyncHandler(async (req, res) => {

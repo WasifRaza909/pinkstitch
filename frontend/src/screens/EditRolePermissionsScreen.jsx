@@ -1,57 +1,52 @@
 import React, { useEffect, useState } from "react";
-import { getPermissions } from "../features/permissions/permissionSlice";
 import { useDispatch, useSelector } from "react-redux";
-import { useNavigate, useParams } from "react-router-dom";
-import { createRolePermission } from "../features/rolePermissions/rolePermissionSlice";
+import { getRolePermissionById } from "../features/rolePermissions/rolePermissionSlice";
+import { getPermissions, reset } from "../features/permissions/permissionSlice";
+import { useParams } from "react-router-dom";
 
 function RolePermissionsScreen() {
+  const [checkedPermissions, setCheckedPermissions] = useState([]);
   const dispatch = useDispatch();
-  const navigate = useNavigate();
-  const { roleName } = useParams();
-  const [rolePermissions, setRolePermissions] = useState([]);
+  const { id } = useParams();
 
-  const { permissions, isSuccess, isError, isLoading } = useSelector(
-    (state) => state.permission
-  );
+  const { rolePermission } = useSelector((state) => state.rolePermission);
+  const { permissions } = useSelector((state) => state.permission);
 
   useEffect(() => {
+    dispatch(getRolePermissionById(id));
     dispatch(getPermissions());
+
+    return () => {
+      dispatch(reset());
+      dispatch(reset());
+    };
   }, []);
 
-  const onSubmit = async (e) => {
+  useEffect(() => {
+    // Update checkedPermissions when rolePermission is fetched
+    if (rolePermission && rolePermission.permissions) {
+      rolePermission.permissions.forEach((permission) => {
+        checkedPermissions.push(permission._id);
+      });
+    }
+  }, [rolePermission]);
+
+  const onSubmit = (e) => {
     e.preventDefault();
 
-    const rolePermission = {
-      role: roleName,
-      permissions: rolePermissions,
-    };
-
-    await dispatch(createRolePermission(rolePermission));
-
-    setRolePermissions([]);
-
-    if (isSuccess && !isError) {
-      navigate("/admin/roles");
+    if (window.confirm("Submit permissions?")) {
+      console.log("SUBMITTED");
+      return;
     }
-  };
 
-  const handlePermissionChange = (e, permission) => {
-    if (e.target.checked) {
-      setRolePermissions((prevPermissions) => [...prevPermissions, permission]);
-    } else {
-      setRolePermissions((prevPermissions) =>
-        prevPermissions.filter((p) => p !== permission)
-      );
-    }
+    return;
   };
-
   return (
     <>
       <div className="role_permissions">
         <div className="role_permissions_container">
           <div>
-            <h1>Role Permissions</h1>
-            <h2>{roleName}</h2>
+            <h1>Edit Role Permissions</h1>
             <form onSubmit={onSubmit}>
               <table>
                 <thead>
@@ -64,26 +59,24 @@ function RolePermissionsScreen() {
                   <tr>
                     <td>User</td>
                     <td>
-                      {permissions && permissions.length > 0 ? (
+                      {rolePermission.permissions &&
+                      permissions &&
+                      permissions.length > 0 ? (
                         permissions.map((permission) => {
                           if (permission.permission.endsWith("User")) {
                             return (
-                              <label key={permission.id}>
+                              <label key={permission._id}>
                                 <input
                                   type="checkbox"
-                                  value={permission.permission}
-                                  onChange={(e) =>
-                                    handlePermissionChange(
-                                      e,
-                                      permission.permission
-                                    )
-                                  }
+                                  checked={checkedPermissions.includes(
+                                    permission._id
+                                  )}
                                 />
                                 {permission.permission}
                               </label>
                             );
                           }
-                          return null; // Render nothing for other permissions
+                          return null;
                         })
                       ) : (
                         <p>Loading permissions...</p>
@@ -93,20 +86,18 @@ function RolePermissionsScreen() {
                   <tr>
                     <td>Agent</td>
                     <td>
-                      {permissions && permissions.length > 0 ? (
+                      {rolePermission.permissions &&
+                      permissions &&
+                      permissions.length > 0 ? (
                         permissions.map((permission) => {
                           if (permission.permission.endsWith("Agent")) {
                             return (
-                              <label key={permission.id}>
+                              <label key={permission._id}>
                                 <input
                                   type="checkbox"
-                                  value={permission.permission}
-                                  onChange={(e) =>
-                                    handlePermissionChange(
-                                      e,
-                                      permission.permission
-                                    )
-                                  }
+                                  checked={checkedPermissions.includes(
+                                    permission._id
+                                  )}
                                 />
                                 {permission.permission}
                               </label>
@@ -122,20 +113,18 @@ function RolePermissionsScreen() {
                   <tr>
                     <td>Customer</td>
                     <td>
-                      {permissions && permissions.length > 0 ? (
+                      {rolePermission.permissions &&
+                      permissions &&
+                      permissions.length > 0 ? (
                         permissions.map((permission) => {
                           if (permission.permission.endsWith("Customer")) {
                             return (
-                              <label key={permission.id}>
+                              <label key={permission._id}>
                                 <input
                                   type="checkbox"
-                                  value={permission.permission}
-                                  onChange={(e) =>
-                                    handlePermissionChange(
-                                      e,
-                                      permission.permission
-                                    )
-                                  }
+                                  checked={checkedPermissions.includes(
+                                    permission._id
+                                  )}
                                 />
                                 {permission.permission}
                               </label>
@@ -290,7 +279,7 @@ function RolePermissionsScreen() {
                 </tbody>
               </table>
 
-              <button type="submit">Submit</button>
+              <button type="Submit">Submit</button>
             </form>
           </div>
         </div>

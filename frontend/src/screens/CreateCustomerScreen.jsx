@@ -6,9 +6,15 @@ function CreateCustomerScreen() {
   const navigate = useNavigate();
   const [addressCount, setAddressCount] = useState(1);
 
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [contact, setContact] = useState("");
+  const [dateOfBirth, setDateOfBirth] = useState("");
+  const [addresses, setAddresses] = useState([{ address: "", location: "" }]);
+
   const addNewAddress = () => {
     if (addressCount < 3) {
-      setAddressCount((prevCount) => prevCount + 1);
+      setAddressCount(addressCount + 1);
     }
   };
 
@@ -28,39 +34,59 @@ function CreateCustomerScreen() {
               <div>
                 <label>
                   Full Name
-                  <input type="text" required />
+                  <input
+                    value={name}
+                    onChange={(e) => setName(e.target.value)}
+                    type="text"
+                    required
+                  />
                 </label>
               </div>
               <div>
                 <label>
                   Email
-                  <input type="email" required />
+                  <input
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                    type="email"
+                    required
+                  />
                 </label>
               </div>
               <div>
                 <label>
                   Contact
-                  <input type="number" required />
+                  <input
+                    value={contact}
+                    onChange={(e) => setContact(e.target.value)}
+                    type="number"
+                    required
+                  />
                 </label>
               </div>
               <div>
                 <label>
                   Date Of Birth
-                  <input type="date" required />
+                  <input
+                    value={dateOfBirth}
+                    onChange={(e) => setDateOfBirth(e.target.value)}
+                    type="date"
+                    required
+                  />
                 </label>
               </div>
               <div className="addresses">
-                {Array.from({ length: addressCount }, (_, index) => (
+                {Array.from(Array(addressCount).keys()).map((index) => (
                   <div key={index}>
                     <label>
                       Address {index + 1}
-                      {index > 0 ? (
+                      {index > 0 && (
                         <i
                           style={{ color: "red", display: "inline-block" }}
                           className="fas fa-multiply"
                           onClick={removeAddress}
                         ></i>
-                      ) : null}
+                      )}
                     </label>
                     <input type="text" required />
                     <label>Location {index + 1}</label>

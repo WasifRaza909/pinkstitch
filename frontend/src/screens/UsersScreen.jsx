@@ -1,7 +1,7 @@
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { useEffect } from "react";
-import { deleteUser, getUsers } from "../features/users/userSlice";
+import { deleteUser, getUsers, reset } from "../features/users/userSlice";
 
 function UsersScreen() {
   const navigate = useNavigate();
@@ -19,6 +19,10 @@ function UsersScreen() {
 
   useEffect(() => {
     dispatch(getUsers());
+
+    return () => {
+      dispatch(reset());
+    };
   }, [dispatch]);
 
   return (

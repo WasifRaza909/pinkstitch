@@ -1,20 +1,34 @@
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import { useState } from "react";
-import { deleteUser } from "../features/users/userSlice";
+import { useEffect, useState } from "react";
+import { deleteCustomer } from "../features/customers/customerSlice";
 import CustomerAddressModal from "../components/CustomerAddressModal";
+import { getCustomers } from "../features/customers/customerSlice";
 
 function CustomersScreen() {
+  const [selectedCustomerId, setSelectedCustomerId] = useState(null);
   const [addressModal, setAddressModal] = useState(false);
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
   const onDelete = (id) => {
     if (window.confirm("Are you sure?")) {
-      dispatch(deleteUser(id));
+      dispatch(deleteCustomer(id));
     }
+    dispatch(getCustomers());
     return;
   };
+
+  const onAddressPreview = (id) => {
+    setSelectedCustomerId(id);
+    setAddressModal(true);
+  };
+
+  const { customers } = useSelector((state) => state.customer);
+
+  useEffect(() => {
+    dispatch(getCustomers());
+  }, [dispatch]);
 
   return (
     <>
@@ -42,7 +56,7 @@ function CustomersScreen() {
           <table>
             <thead>
               <tr>
-                <th>S.No</th>
+                <th>Id</th>
                 <th>Name</th>
                 <th>Email</th>
                 <th>Contact</th>
@@ -51,40 +65,52 @@ function CustomersScreen() {
               </tr>
             </thead>
             <tbody>
-              <tr>
-                <td>1</td>
-                <td>Wasif</td>
-                <td>wasif@gmail.com</td>
-                <td>+92 1234 567890</td>
-                <td>29-05-2002</td>
-                <td>
-                  <button
-                    className="show_address_btn"
-                    onClick={() => setAddressModal(!addressModal)}
-                  >
-                    Show Addresses
-                  </button>
-                </td>
-                <td>
-                  <button onClick={() => navigate("/admin/customers/edit")}>
-                    <i className="fas fa-edit"></i>
-                  </button>
-                  <button
-                    onClick={() => {
-                      //   onDelete(user.SNo);
-                    }}
-                  >
-                    <i className="fas fa-trash"></i>
-                  </button>
-                </td>
-              </tr>
+              {customers && customers.length > 0
+                ? customers.map((customer) => (
+                    <tr>
+                      <td>{customer._id}</td>
+                      <td>{customer.name}</td>
+                      <td>{customer.email}</td>
+                      <td>{customer.contact}</td>
+                      <td>{customer.dateOfBirth}</td>
+                      <td>
+                        <button
+                          className="show_address_btn"
+                          onClick={() => onAddressPreview(customer._id)}
+                        >
+                          Show Addresses
+                        </button>
+                      </td>
+                      <td>
+                        <button
+                          onClick={() => navigate("/admin/customers/edit")}
+                        >
+                          <i className="fas fa-edit"></i>
+                        </button>
+                        <button
+                          onClick={() => {
+                            onDelete(customer._id);
+                          }}
+                        >
+                          <i className="fas fa-trash"></i>
+                        </button>
+                      </td>
+                    </tr>
+                  ))
+                : null}
             </tbody>
           </table>
         </div>
       </div>
-      <div style={{ display: `${addressModal === true ? "block" : "none"}` }}>
-        <CustomerAddressModal />
-      </div>
+      {addressModal && (
+        <div
+          style={{
+            display: `${addressModal === true ? "block" : "none"}`,
+          }}
+        >
+          <CustomerAddressModal customerId={selectedCustomerId} />
+        </div>
+      )}
     </>
   );
 }

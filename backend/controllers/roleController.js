@@ -19,6 +19,21 @@ const createRole = asyncHandler(async (req, res) => {
   }
 });
 
+// @desc    Get Roles
+// @route   GET /api/roles
+// @access  Private
+const getRoles = asyncHandler(async (req, res) => {
+  const roles = await Role.find();
+
+  if (roles) {
+    res.status(200).json(roles);
+  } else {
+    res.status(400);
+    throw new Error("No Roles found");
+  }
+});
+
 module.exports = {
   createRole,
+  getRoles,
 };
